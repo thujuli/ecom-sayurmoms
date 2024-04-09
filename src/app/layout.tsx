@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/views/navbar";
+import Container from "@/components/container";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -24,12 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "max-w-[1440px] mx-auto min-h-screen font-jakarta antialiased",
+          "min-h-screen font-jakarta antialiased",
           jakarta.variable
         )}
       >
         <Navbar />
-        {children}
+        <Container>{children}</Container>
       </body>
     </html>
   );
