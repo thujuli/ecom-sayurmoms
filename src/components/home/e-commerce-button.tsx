@@ -12,7 +12,7 @@ const ECommerceButton: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className="fixed -right-[45px] top-1/2 z-50 -translate-y-1/2 md:-right-[60px] lg:-right-[86px]">
+    <div className="fixed -right-[45px] top-1/2 z-50 -translate-y-1/2 md:-right-[62px] lg:-right-[86px]">
       <div
         className={cn(
           "absolute right-[66px] top-1/2 w-[80px] -translate-y-1/2 space-y-1 rounded-bl rounded-tl bg-[#F3F6EA] px-2 py-4 md:right-[86px] md:w-[120px] md:space-y-2 md:px-4 md:py-6 lg:right-[122px] lg:w-[160px] lg:space-y-4 lg:rounded-bl-lg lg:rounded-tl-lg lg:px-6 lg:py-8",
