@@ -12,7 +12,7 @@ const NavbarMenu: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className="flex lg:hidden flex-col">
+    <div className="flex flex-col lg:hidden">
       <button
         type="button"
         onClick={() => setIsActive(!isActive)}
@@ -23,8 +23,8 @@ const NavbarMenu: React.FC = () => {
       </button>
       <div
         className={cn(
-          "absolute z-20 left-0 top-[50px] md:top-[100px] w-full flex-col px-2 md:px-4 gap-2 md:gap-4 py-4 bg-black/90 text-gray font-medium",
-          isActive ? "flex" : "hidden"
+          "absolute left-0 top-[50px] z-20 w-full flex-col gap-2 bg-black/90 px-2 py-4 font-medium text-gray md:top-[100px] md:gap-4 md:px-4",
+          isActive ? "flex" : "hidden",
         )}
       >
         {menuItem.map((item, idx) => (
