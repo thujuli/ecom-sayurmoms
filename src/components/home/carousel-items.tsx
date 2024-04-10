@@ -45,7 +45,7 @@ const CarouselItems: React.FC<Props> = (props) => {
                 onClick={() =>
                   window.open(carousel.acf.link, "_blank")?.focus()
                 }
-                className="absolute bottom-[9%] md:bottom-11 lg:bottom-14 xl:bottom-16 left-[10%] bg-black text-gray rounded-full px-2 lg:px-4 py-1 lg:py-2 text-[10px] lg:text-base"
+                className="absolute bottom-[9%] left-[10%] rounded-full bg-black px-2 py-1 text-[10px] text-gray md:bottom-11 lg:bottom-14 lg:px-4 lg:py-2 lg:text-base xl:bottom-16"
               >
                 Cek Sekarang
               </button>

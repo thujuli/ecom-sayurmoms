@@ -11,7 +11,7 @@ import { ShoppingCart } from "lucide-react";
 const Navbar: React.FC = () => {
   return (
     <header className="relative h-[50px] md:h-[100px]">
-      <nav className="z-50 fixed flex justify-between items-center w-full px-5 lg:px-[70px] h-[50px] md:h-[100px] bg-black text-white">
+      <nav className="fixed z-50 flex h-[50px] w-full items-center justify-between bg-black px-5 text-white md:h-[100px] lg:px-[70px]">
         <NavbarMenu />
         {/* image for mobile and tablet */}
         <Image
@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
           alt="Logo Sayurmoms"
           width={130}
           height={30}
-          className="md:hidden object-contain"
+          className="object-contain md:hidden"
         />
         {/* image for laptop and desktop */}
         <Image
@@ -27,9 +27,9 @@ const Navbar: React.FC = () => {
           alt="Logo Sayurmoms"
           width={170}
           height={100}
-          className="hidden md:inline object-contain"
+          className="hidden object-contain md:inline"
         />
-        <div className="hidden lg:flex md:gap-3 xl:gap-10 text-gray lg:text-xl xl:text-2xl">
+        <div className="hidden text-gray md:gap-3 lg:flex lg:text-xl xl:gap-10 xl:text-2xl">
           {menuItem.map((item, idx) => (
             <Link key={idx} href={item.link}>
               {item.name}
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
 
         <button
           type="button"
-          className="bg-green p-1 md:p-2 rounded-sm md:rounded-lg"
+          className="rounded-sm bg-green p-1 md:rounded-lg md:p-2"
         >
           <ShoppingCart
             width={16}

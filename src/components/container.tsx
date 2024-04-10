@@ -7,7 +7,7 @@ type Props = {
 const Container: React.FC<Props> = (props) => {
   const { children } = props;
 
-  return <div className="max-w-[1536px] mx-auto">{children}</div>;
+  return <div className="mx-auto max-w-[1536px]">{children}</div>;
 };
 
 export default Container;

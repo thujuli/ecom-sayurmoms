@@ -12,11 +12,11 @@ const ECommerceButton: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className="fixed z-50 top-1/2 -right-[45px] md:-right-[60px] lg:-right-[86px] -translate-y-1/2">
+    <div className="fixed -right-[45px] top-1/2 z-50 -translate-y-1/2 md:-right-[60px] lg:-right-[86px]">
       <div
         className={cn(
-          "absolute top-1/2 -translate-y-1/2 right-[66px] md:right-[86px] lg:right-[122px] py-4 md:py-6 lg:py-8 px-2 md:px-4 lg:px-6 w-[80px] md:w-[120px] lg:w-[160px] space-y-1 md:space-y-2 lg:space-y-4 rounded-tl lg:rounded-tl-lg rounded-bl lg:rounded-bl-lg bg-[#F3F6EA]",
-          isActive ? "block" : "hidden"
+          "absolute right-[66px] top-1/2 w-[80px] -translate-y-1/2 space-y-1 rounded-bl rounded-tl bg-[#F3F6EA] px-2 py-4 md:right-[86px] md:w-[120px] md:space-y-2 md:px-4 md:py-6 lg:right-[122px] lg:w-[160px] lg:space-y-4 lg:rounded-bl-lg lg:rounded-tl-lg lg:px-6 lg:py-8",
+          isActive ? "block" : "hidden",
         )}
       >
         {eCommerceItem.map((item, idx) => (
@@ -56,22 +56,22 @@ const ECommerceButton: React.FC = () => {
       <button
         type="button"
         onClick={() => setIsActive(!isActive)}
-        className="transform -rotate-90 p-1 bg-black text-white"
+        className="-rotate-90 transform bg-black p-1 text-white"
       >
-        <span className="flex items-center px-2 lg:px-4 lg:py-1 text-[10px] md:text-sm lg:text-[18px]">
+        <span className="flex items-center px-2 text-[10px] md:text-sm lg:px-4 lg:py-1 lg:text-[18px]">
           {/* icon for mobile */}
           <ShoppingBag height={10} width={10} className="mr-1 md:hidden" />{" "}
           {/* icon for tablet */}
           <ShoppingBag
             height={14}
             width={14}
-            className="mr-1 md:mr-2 hidden md:inline-block lg:hidden"
+            className="mr-1 hidden md:mr-2 md:inline-block lg:hidden"
           />{" "}
           {/* icon for laptop */}
           <ShoppingBag
             height={24}
             width={24}
-            className="mr-1 lg:mr-3 hidden lg:inline-block"
+            className="mr-1 hidden lg:mr-3 lg:inline-block"
           />{" "}
           Pesan Sekarang
         </span>

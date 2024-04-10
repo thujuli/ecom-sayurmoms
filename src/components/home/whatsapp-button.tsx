@@ -15,7 +15,7 @@ const WhatsappButton: React.FC = () => {
         width={50}
         height={50}
         onClick={() => window.open(whatsapp.link, "_blank")?.focus()}
-        className="md:hidden fixed z-50 bottom-[3%] right-[2%] cursor-pointer"
+        className="fixed bottom-[3%] right-[2%] z-50 cursor-pointer md:hidden"
       />
       {/* image for tablet */}
       <Image
@@ -24,7 +24,7 @@ const WhatsappButton: React.FC = () => {
         width={60}
         height={60}
         onClick={() => window.open(whatsapp.link, "_blank")?.focus()}
-        className="hidden md:inline-block lg:hidden fixed z-50 bottom-[3%] right-[2%] cursor-pointer"
+        className="fixed bottom-[3%] right-[2%] z-50 hidden cursor-pointer md:inline-block lg:hidden"
       />
       {/* image for laptop */}
       <Image
@@ -33,7 +33,7 @@ const WhatsappButton: React.FC = () => {
         width={90}
         height={90}
         onClick={() => window.open(whatsapp.link, "_blank")?.focus()}
-        className="hidden lg:inline-block fixed z-50 bottom-[3%] right-[2%] cursor-pointer"
+        className="fixed bottom-[3%] right-[2%] z-50 hidden cursor-pointer lg:inline-block"
       />
     </>
   );
