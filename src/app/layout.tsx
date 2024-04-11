@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/views/navbar";
 import Container from "@/components/container";
+import StoreProvider from "./store-provider";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -23,16 +24,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen font-jakarta antialiased",
-          jakarta.variable,
-        )}
-      >
-        <Navbar />
-        <Container>{children}</Container>
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang="en">
+        <body
+          className={cn(
+            "min-h-screen font-jakarta antialiased",
+            jakarta.variable,
+          )}
+        >
+          <Navbar />
+          <Container>{children}</Container>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }

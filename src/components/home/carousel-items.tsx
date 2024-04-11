@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-
 import Autoplay from "embla-carousel-autoplay";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
@@ -12,9 +11,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Carousel as CarouselType } from "@/lib/types";
 
 type Props = {
-  carousels: any[];
+  carousels: CarouselType[];
 };
 
 const CarouselItems: React.FC<Props> = (props) => {

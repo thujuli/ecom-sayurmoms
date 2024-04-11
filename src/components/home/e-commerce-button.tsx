@@ -2,10 +2,8 @@
 
 import { eCommerceItem } from "@/lib/helper";
 import { cn } from "@/lib/utils";
-
 import React, { useState } from "react";
 import Image from "next/image";
-
 import { ShoppingBag } from "lucide-react";
 
 const ECommerceButton: React.FC = () => {
