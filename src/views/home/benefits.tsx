@@ -3,14 +3,13 @@ import { benefits } from "@/lib/const";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import benefitsMobile from "@/public/images/home/benefits-mobile-bg.png";
 import benefitsLaptop from "@/public/images/home/benefits-laptop-bg.png";
-
 import Image from "next/image";
 import React from "react";
 
 const Benefits: React.FC = () => {
   return (
     <section id="benefits" className="relative">
-      {/* benefits section for laptop and desktop */}
+      {/* benefits section for mobile and tablet */}
       <div className="lg:hidden">
         <AspectRatio ratio={2 / 1}>
           <Image
@@ -23,10 +22,10 @@ const Benefits: React.FC = () => {
         </AspectRatio>
         <div className="absolute inset-0 flex flex-col items-center justify-center px-5 md:px-8">
           <div className="w-full">
-            <h2 className="text-base font-bold text-white md:text-2xl">
+            <h2 className="text-[20px] font-bold text-white md:text-2xl">
               Mengapa harus
             </h2>
-            <h2 className="text-base font-bold text-white md:text-2xl">
+            <h2 className="text-[20px] font-bold text-white md:text-2xl">
               Sayurmoms?
             </h2>
           </div>
@@ -34,7 +33,7 @@ const Benefits: React.FC = () => {
             {benefits.map((benefit, idx) => (
               <div
                 key={idx}
-                className="border-orange flex flex-col items-center justify-center rounded border bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6"
+                className="flex flex-col items-center justify-center rounded border border-orange bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6"
               >
                 <div className="mb-1 rounded bg-green p-1 md:p-2">
                   <benefit.icon width={17} height={17} className="md:hidden" />
@@ -44,7 +43,7 @@ const Benefits: React.FC = () => {
                     className="hidden md:inline-block"
                   />
                 </div>
-                <span className="text-center text-[10px] font-medium md:text-base">
+                <span className="text-center text-[9px] font-medium md:text-base">
                   {benefit.title}
                 </span>
               </div>
@@ -64,7 +63,7 @@ const Benefits: React.FC = () => {
             className="rounded-bl-3xl rounded-br-3xl object-cover "
           />
         </AspectRatio>
-        <div className="absolute inset-0 flex flex-col items-center px-5 md:px-8 lg:mt-12 lg:px-20 xl:mt-16">
+        <div className="absolute inset-0 flex flex-col items-center px-5 md:px-8 lg:top-[20%] lg:px-20">
           <div className="w-full lg:space-y-4 xl:space-y-6">
             <h2 className="text-base font-bold text-white md:text-2xl lg:text-4xl xl:text-6xl">
               Mengapa harus
@@ -77,7 +76,7 @@ const Benefits: React.FC = () => {
             {benefits.map((benefit, idx) => (
               <div
                 key={idx}
-                className="border-orange flex flex-col items-center justify-center rounded border bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6 lg:rounded-2xl lg:px-6 lg:py-7 xl:rounded-3xl xl:px-9 xl:py-12"
+                className="flex flex-col items-center justify-center rounded border border-orange bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6 lg:rounded-2xl lg:px-6 lg:py-7 xl:rounded-3xl xl:px-9 xl:py-12"
               >
                 <div className="mb-1 rounded bg-green p-1 md:p-2 lg:mb-2 lg:rounded-lg xl:mb-3">
                   <benefit.icon

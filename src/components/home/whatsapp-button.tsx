@@ -1,7 +1,6 @@
 "use client";
 
 import { whatsapp } from "@/lib/helper";
-
 import Image from "next/image";
 import React from "react";
 

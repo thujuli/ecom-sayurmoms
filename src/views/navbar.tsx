@@ -1,11 +1,9 @@
 import logo from "@/public/images/logo.png";
 import { menuItem } from "@/lib/helper";
 import NavbarMenu from "@/components/navbar-menu";
-
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-
 import { ShoppingCart } from "lucide-react";
 
 const Navbar: React.FC = () => {
