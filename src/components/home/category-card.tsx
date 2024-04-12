@@ -1,6 +1,7 @@
 import background from "@/public/images/home/category-card-bg.png";
 import Image from "next/image";
 import React from "react";
+import { Skeleton } from "../ui/skeleton";
 
 type Props = {
   image: string;
@@ -38,6 +39,36 @@ const CategoryCard: React.FC<Props> = (props) => {
           </p>
         </div>
       </div>
+    </div>
+  );
+};
+
+export const CategoryCardLoading: React.FC = () => {
+  return (
+    <div className="flex h-[90px] w-full gap-4 rounded-lg bg-slate-200 p-1 md:h-[150px] md:rounded-2xl md:p-2 lg:h-[200px] lg:rounded-3xl xl:h-[260px]">
+      <div className="flex w-full items-center justify-center">
+        <Skeleton className="h-[60px] w-full md:h-[88px] lg:h-[110px] xl:h-[156px]" />
+      </div>
+      <div className="flex w-full flex-col justify-center gap-1  md:gap-2 xl:gap-3">
+        <Skeleton className="h-[28px] lg:h-[45px] xl:h-[80px]" />
+        <Skeleton className="h-[28px] md:h-[48px] lg:h-[56px]" />
+      </div>
+    </div>
+  );
+};
+
+export const CategoryCardLoadingWrapper: React.FC = () => {
+  return (
+    <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3 xl:gap-8">
+      <div className="hidden flex-col justify-center font-bold leading-snug lg:flex lg:space-y-3 lg:text-4xl xl:text-6xl">
+        <h2 className="text-black">Apa saja product</h2>
+        <h2 className="text-[#A7BB09]"> Saryurmoms?</h2>
+      </div>
+      {Array(8)
+        .fill(null)
+        .map((_, idx) => (
+          <CategoryCardLoading key={idx} />
+        ))}
     </div>
   );
 };
