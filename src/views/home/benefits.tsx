@@ -2,7 +2,7 @@ import { benefits } from "@/lib/const";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import benefitsMobile from "@/public/images/home/benefits-mobile-bg.png";
-import benefitsLaptop from "@/public/images/home/benefits-laptop-bg.png";
+import benefitsDesktop from "@/public/images/home/benefits-desktop-bg.png";
 import Image from "next/image";
 import React from "react";
 
@@ -56,8 +56,8 @@ const Benefits: React.FC = () => {
       <div className="hidden lg:block">
         <AspectRatio ratio={1920 / 617} className="hidden lg:block">
           <Image
-            src={benefitsLaptop}
-            alt="Benefits Laptop Background"
+            src={benefitsDesktop}
+            alt="Benefits Desktop Background"
             fill
             sizes="100vw"
             className="rounded-bl-3xl rounded-br-3xl object-cover "

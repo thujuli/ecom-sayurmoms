@@ -7,7 +7,7 @@ import CategoryCard, {
 import React from "react";
 
 const Categories: React.FC = () => {
-  const { categories, loading } = useAppSelector((state) => state.categories);
+  const { data, loading } = useAppSelector((state) => state.categories);
 
   if (loading) return <CategoriesLoading />;
 
@@ -26,7 +26,7 @@ const Categories: React.FC = () => {
           <h2 className="text-black">Apa saja product</h2>
           <h2 className="text-[#A7BB09]"> Saryurmoms?</h2>
         </div>
-        {categories.map((category) => (
+        {data.map((category) => (
           <CategoryCard
             key={category.id}
             description={category.description}
