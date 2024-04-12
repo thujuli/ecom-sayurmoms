@@ -2,7 +2,7 @@
 
 import { useAppDispatch } from "@/lib/hooks";
 import { fetchCategoriesAsync } from "@/lib/features/categoriesSlice";
-
+import { fetchFeaturedProductsAsync } from "@/lib/features/featuredProductsSlice";
 import React, { useEffect } from "react";
 
 type Props = {
@@ -15,6 +15,7 @@ export default function HomeTemplate(props: Props) {
 
   useEffect(() => {
     dispatch(fetchCategoriesAsync());
+    dispatch(fetchFeaturedProductsAsync());
   }, [dispatch]);
 
   return <>{children}</>;

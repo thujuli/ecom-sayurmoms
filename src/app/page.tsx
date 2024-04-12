@@ -2,6 +2,7 @@ import Benefits from "@/views/home/benefits";
 import Carousels from "@/views/home/carousels";
 import Categories from "@/views/home/categories";
 import ECommerce from "@/views/home/e-commerce";
+import FeaturedProducts from "@/views/home/featured-products";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Carousels />
       <Benefits />
       <Categories />
+      <FeaturedProducts />
     </>
   );
 }
