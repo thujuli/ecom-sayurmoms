@@ -1,8 +1,7 @@
 "use client";
 
-import { getCategories } from "@/lib/data";
 import { useAppDispatch } from "@/lib/hooks";
-import { setCategories } from "@/lib/features/categoriesSlice";
+import { fetchCategoriesAsync } from "@/lib/features/categoriesSlice";
 
 import React, { useEffect } from "react";
 
@@ -15,13 +14,8 @@ export default function HomeTemplate(props: Props) {
   const { children } = props;
 
   useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  const fetchCategories = async () => {
-    const categories = await getCategories();
-    dispatch(setCategories(categories));
-  };
+    dispatch(fetchCategoriesAsync());
+  }, [dispatch]);
 
   return <>{children}</>;
 }

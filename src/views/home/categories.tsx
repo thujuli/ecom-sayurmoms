@@ -1,11 +1,15 @@
 "use client";
 
-import CategoryCard from "@/components/home/category-card";
 import { useAppSelector } from "@/lib/hooks";
+import CategoryCard, {
+  CategoryCardLoadingWrapper,
+} from "@/components/home/category-card";
 import React from "react";
 
 const Categories: React.FC = () => {
-  const { categories } = useAppSelector((state) => state.categories);
+  const { categories, loading } = useAppSelector((state) => state.categories);
+
+  if (loading) return <CategoriesLoading />;
 
   return (
     <section
@@ -31,6 +35,21 @@ const Categories: React.FC = () => {
           />
         ))}
       </div>
+    </section>
+  );
+};
+
+export const CategoriesLoading: React.FC = () => {
+  return (
+    <section
+      id="categories"
+      className="mt-[30px] px-5 lg:mt-32 lg:px-10 xl:mt-44"
+    >
+      <div className="mb-5 text-[20px] font-bold leading-tight  md:text-2xl lg:hidden">
+        <h2 className="leading-tight text-black">Apa saja product</h2>
+        <h2 className="text-green">Saryurmoms?</h2>
+      </div>
+      <CategoryCardLoadingWrapper />;
     </section>
   );
 };
