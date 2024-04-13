@@ -24,6 +24,7 @@ const config = {
       colors: {
         black: "#181818",
         green: "#CBE023",
+        darkGreen: "#A7BB09",
         gray: "#E6E6E6",
         orange: "#FE9D3C",
         border: "hsl(var(--border))",

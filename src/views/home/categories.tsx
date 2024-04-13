@@ -18,13 +18,13 @@ const Categories: React.FC = () => {
     >
       <div className="mb-5 text-[20px] font-bold leading-tight  md:text-2xl lg:hidden">
         <h2 className="leading-tight text-black">Apa saja product</h2>
-        <h2 className="text-green">Saryurmoms?</h2>
+        <h2 className="text-darkGreen font-extrabold">Saryurmoms?</h2>
       </div>
 
       <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3 xl:gap-8">
         <div className="hidden flex-col justify-center font-bold leading-snug lg:flex lg:space-y-3 lg:text-4xl xl:text-6xl">
           <h2 className="text-black">Apa saja product</h2>
-          <h2 className="text-[#A7BB09]"> Saryurmoms?</h2>
+          <h2 className="text-darkGreen font-extrabold"> Saryurmoms?</h2>
         </div>
         {data.map((category) => (
           <CategoryCard
@@ -47,7 +47,7 @@ export const CategoriesLoading: React.FC = () => {
     >
       <div className="mb-5 text-[20px] font-bold leading-tight  md:text-2xl lg:hidden">
         <h2 className="leading-tight text-black">Apa saja product</h2>
-        <h2 className="text-green">Saryurmoms?</h2>
+        <h2 className="text-darkGreen font-extrabold">Saryurmoms?</h2>
       </div>
       <CategoryCardLoadingWrapper />
     </section>

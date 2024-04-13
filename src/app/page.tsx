@@ -1,3 +1,4 @@
+import AboutUs from "@/views/home/about-us";
 import Banner from "@/views/home/banner";
 import Benefits from "@/views/home/benefits";
 import Carousels from "@/views/home/carousels";
@@ -14,6 +15,7 @@ export default function Home() {
       <Categories />
       <FeaturedProducts />
       <Banner />
+      <AboutUs />
     </>
   );
 }

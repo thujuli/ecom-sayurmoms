@@ -1,6 +1,6 @@
 "use client";
 
-import { menuItem } from "@/lib/helper";
+import { menuItems } from "@/lib/helper";
 import React, { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -25,7 +25,7 @@ const NavbarMenu: React.FC = () => {
           isActive ? "flex" : "hidden",
         )}
       >
-        {menuItem.map((item, idx) => (
+        {menuItems.map((item, idx) => (
           <Link
             key={idx}
             href={item.link}

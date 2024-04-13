@@ -1,6 +1,6 @@
 "use client";
 
-import { eCommerceItem } from "@/lib/helper";
+import { eCommerceItems } from "@/lib/helper";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -17,7 +17,7 @@ const ECommerceButton: React.FC = () => {
           isActive ? "block" : "hidden",
         )}
       >
-        {eCommerceItem.map((item, idx) => (
+        {eCommerceItems.map((item, idx) => (
           <a
             key={idx}
             href={item.link}
