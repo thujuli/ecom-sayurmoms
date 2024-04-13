@@ -9,7 +9,7 @@ export const metadataDetail = {
 };
 
 export const menuItems = [
-  { name: "Beranda", link: "/#carousels" },
+  { name: "Beranda", link: "/#navbar" },
   { name: "Produk Unggulan", link: "/#featured-products" },
   { name: "Tentang Kami", link: "/#about-us" },
   { name: "Produk", link: "/" },

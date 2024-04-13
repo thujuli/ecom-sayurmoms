@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
   const [menuActive, setMenuActive] = useState("");
 
   return (
-    <header className="relative h-[50px] md:h-[100px]">
+    <header id="navbar" className="relative h-[50px] md:h-[100px]">
       <nav className="fixed z-50 flex h-[50px] w-full items-center justify-between bg-black px-5 text-white md:h-[100px] lg:px-[70px]">
         <NavbarMenu />
         {/* image for mobile and tablet */}
