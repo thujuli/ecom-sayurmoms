@@ -1,4 +1,3 @@
-import { Product } from "@/lib/types";
 import { cn, numberFormat, priceToIDR } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";

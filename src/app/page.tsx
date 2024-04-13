@@ -1,3 +1,4 @@
+import Banner from "@/views/home/banner";
 import Benefits from "@/views/home/benefits";
 import Carousels from "@/views/home/carousels";
 import Categories from "@/views/home/categories";
@@ -12,6 +13,7 @@ export default function Home() {
       <Benefits />
       <Categories />
       <FeaturedProducts />
+      <Banner />
     </>
   );
 }

@@ -3,8 +3,8 @@ import tokopediaLogo from "@/public/images/tokopedia-logo.png";
 import whatsappLogo from "@/public/images/whatsapp-logo.png";
 
 export const menuItem = [
-  { name: "Beranda", link: "/" },
-  { name: "Produk Unggulan", link: "/" },
+  { name: "Beranda", link: "/#carousels" },
+  { name: "Produk Unggulan", link: "/#featured-products" },
   { name: "Tentang Kami", link: "/" },
   { name: "Produk", link: "/" },
   { name: "Ulasan", link: "/" },
