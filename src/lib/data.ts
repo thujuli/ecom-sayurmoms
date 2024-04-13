@@ -1,4 +1,4 @@
-import { Carousel, Category, Product } from "./types";
+import { Banner, Carousel, Category, Product } from "./types";
 
 export const getCarousels = async () => {
   const res = await fetch(
@@ -34,4 +34,16 @@ export const getFeaturedProducts = async () => {
 
   const data: Product[] = await res.json();
   return data;
+};
+
+export const getBanner = async () => {
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_WP_API_URL +
+      "/banners?_fields=id,title,acf&acf_format=standard&orderby=date&order=desc&per_page=1",
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch banner");
+
+  const data: Banner[] = await res.json();
+  return data[0];
 };

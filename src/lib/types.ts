@@ -18,6 +18,16 @@ export type Carousel = {
   };
 };
 
+export type Banner = {
+  id: number;
+  title: {
+    rendered: string;
+  };
+  acf: {
+    image: string;
+  };
+};
+
 export type Product = {
   id: number;
   title: {

@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     "Sayurmoms merupakan toko online yang menyediakan berbagai bahan makanan seperti sayur, buah, daging, ikan-ikanan, frozen food dan aneka bahan kering lainnya. Beroperasi di Surabaya sejak Juni 2020, Sayurmoms telah melayani pelanggan di berbagai kota di pulau Jawa utamanya daerah Surabaya dan sekitarnya.",
 };
 
+export const revalidate = 3600;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <StoreProvider>
-      <html lang="en">
+      <html lang="en" className="scroll-smooth">
         <body
           className={cn(
             "min-h-screen font-jakarta antialiased",

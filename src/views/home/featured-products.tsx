@@ -7,7 +7,7 @@ import Image from "next/image";
 const FeaturedProducts: React.FC = () => {
   return (
     <section
-      id="products"
+      id="featured-products"
       className="relative mt-10 h-[434px] w-full md:h-[640px] lg:mt-14 lg:h-[980px] xl:h-[1120px]"
     >
       {/* Background */}
