@@ -23,11 +23,15 @@ const ProductCard: React.FC<Props> = (props) => {
   return (
     <div className="relative flex h-[250px] min-w-[140px] max-w-[140px] cursor-pointer flex-col overflow-hidden rounded-xl border border-orange bg-[#FDFDFD] p-[10px] md:h-[390px] md:min-w-[220px] md:max-w-[220px] md:border-2 lg:h-[620px] lg:min-w-[380px] lg:max-w-[380px] lg:rounded-[40px] lg:border-2 lg:p-[25px] xl:h-[710px] xl:min-w-[415px] xl:max-w-[415px]">
       {/* badge */}
-      <div className="absolute left-0 top-4 z-10 rounded-br-sm rounded-tr-sm bg-orange px-1 py-[2px] lg:top-[45px] lg:rounded-br-[10px] lg:rounded-tr-[10px] lg:px-[6px] lg:py-[5px]">
-        <p className="text-[10px] font-bold text-[#EAEAEA] md:text-base lg:text-2xl">
-          Diskon {discount}%
-        </p>
-      </div>
+      {discount ? (
+        <div className="absolute left-0 top-4 z-10 rounded-br-sm rounded-tr-sm bg-orange px-1 py-[2px] lg:top-[45px] lg:rounded-br-[10px] lg:rounded-tr-[10px] lg:px-[6px] lg:py-[5px]">
+          <p className="text-[10px] font-bold text-[#EAEAEA] md:text-base lg:text-2xl">
+            Diskon {discount}%
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
 
       {/* image */}
       <div className="relative min-h-[120px] rounded-[10px] bg-[#EAEAEA] md:min-h-[200px] lg:min-h-[300px] lg:rounded-[20px] xl:min-h-[350px]">
@@ -51,20 +55,22 @@ const ProductCard: React.FC<Props> = (props) => {
         <div>
           {/* Price */}
           <div className="mb-2 flex justify-between text-[10px] font-medium text-[#181818] md:text-base lg:mb-6 lg:text-2xl xl:mb-8 xl:text-3xl">
-            {discount && (
+            {discount ? (
               <p>Rp.{priceToIDR(price - (price * discount) / 100)}</p>
+            ) : (
+              ""
             )}
             <p>
               {discount ? (
                 <s className="text-[#909090]">Rp.{priceIDR}</s>
               ) : (
-                priceIDR
+                `Rp.${priceIDR}`
               )}
             </p>
           </div>
 
           {/* Rating and Sold */}
-          <div className="mb-1 grid grid-cols-2 items-center lg:mb-5 lg:gap-x-3 lg:gap-y-3">
+          <div className="mb-1 grid grid-cols-2 items-center gap-x-2 md:gap-x-3 lg:mb-5 lg:gap-x-4 lg:gap-y-3">
             {/* Star */}
             <div className="flex items-center gap-[1px]">
               {Array(5)
@@ -107,7 +113,7 @@ const ProductCard: React.FC<Props> = (props) => {
               {rating.toFixed(1)}
             </span>
             {/* Sold */}
-            <span className="text-[10px] text-[#909090] md:text-base lg:text-[22px]">
+            <span className="col-span-2 text-[10px] text-[#909090] md:text-base lg:text-[22px]">
               {soldIDN} terjual
             </span>
           </div>
