@@ -3,14 +3,15 @@
 import { useAppSelector } from "@/lib/hooks";
 import { Product } from "@/lib/types";
 import React, { useEffect, useState } from "react";
-import CategoryButton from "./category-button";
-import ProductCard from "../product-card";
+import CategoryButton, { CategoryButtonLoading } from "./category-button";
+import ProductCard, { ProductCardLoading } from "../product-card";
 
 const FeaturedProductCardWrapper = () => {
-  const { data: categoriesData } = useAppSelector((state) => state.categories);
-  const { data: featuredProductsData } = useAppSelector(
-    (state) => state.featuredProducts,
+  const { data: categoriesData, loading: loadingCategories } = useAppSelector(
+    (state) => state.categories,
   );
+  const { data: featuredProductsData, loading: loadingFeaturedProducts } =
+    useAppSelector((state) => state.featuredProducts);
 
   const [categorySelected, setCategorySelected] = useState("");
   const [categories, setCategories] = useState<string[]>([]);
@@ -40,6 +41,9 @@ const FeaturedProductCardWrapper = () => {
     );
     setProductsByCategory(newProductsByCategories);
   };
+
+  if (loadingCategories || loadingFeaturedProducts)
+    return <FeaturedProductCardWrapperLoading />;
 
   return (
     <>
@@ -72,6 +76,33 @@ const FeaturedProductCardWrapper = () => {
               discount={Number(product.acf.discount)}
             />
           ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const FeaturedProductCardWrapperLoading: React.FC = () => {
+  return (
+    <>
+      {/* Select Category */}
+      <div className="flex justify-center">
+        <div className="no-scrollbar flex flex-nowrap gap-1 overflow-x-auto md:gap-3 lg:gap-4">
+          {Array(8)
+            .fill(null)
+            .map((_, idx) => (
+              <CategoryButtonLoading key={idx} />
+            ))}
+        </div>
+      </div>
+      {/* Products */}
+      <div className="flex justify-center">
+        <div className="no-scrollbar flex flex-nowrap gap-[10px] overflow-x-auto md:gap-4 lg:gap-7 xl:gap-8">
+          {Array(4)
+            .fill(null)
+            .map((_, idx) => (
+              <ProductCardLoading key={idx} />
+            ))}
         </div>
       </div>
     </>

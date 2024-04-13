@@ -10,7 +10,7 @@ type FeaturedProductsState = {
 
 const initialState: FeaturedProductsState = {
   data: [],
-  loading: false,
+  loading: true,
   error: null,
 };
 
