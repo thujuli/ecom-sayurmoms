@@ -30,4 +30,5 @@ export const CategoryButtonLoading: React.FC = () => {
     <Skeleton className="min-h-[28px] min-w-[75px] max-w-[75px] rounded-full md:min-h-[43px] md:min-w-[114px] md:max-w-[114px] lg:min-h-[55px] lg:min-w-[152px] lg:max-w-[152px] xl:min-h-[63px] xl:min-w-[195px] xl:max-w-[195px]" />
   );
 };
+  
 export default CategoryButton;

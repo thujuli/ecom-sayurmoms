@@ -109,4 +109,5 @@ export const FeaturedProductCardWrapperLoading: React.FC = () => {
   );
 };
 
+  
 export default FeaturedProductCardWrapper;
