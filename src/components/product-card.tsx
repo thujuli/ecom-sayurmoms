@@ -3,6 +3,7 @@ import { cn, numberFormat, priceToIDR } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 import { Star } from "lucide-react";
+import { Skeleton } from "./ui/skeleton";
 
 type Props = {
   title: string;
@@ -63,7 +64,7 @@ const ProductCard: React.FC<Props> = (props) => {
           </div>
 
           {/* Rating and Sold */}
-          <div className="mb-1 grid grid-cols-2 items-center gap-x-1 lg:mb-5 lg:gap-x-3 lg:gap-y-3">
+          <div className="mb-1 grid grid-cols-2 items-center lg:mb-5 lg:gap-x-3 lg:gap-y-3">
             {/* Star */}
             <div className="flex items-center gap-[1px]">
               {Array(5)
@@ -111,6 +112,18 @@ const ProductCard: React.FC<Props> = (props) => {
             </span>
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const ProductCardLoading: React.FC = () => {
+  return (
+    <div className="flex h-[250px] min-w-[140px] max-w-[140px] cursor-pointer flex-col overflow-hidden rounded-xl bg-slate-200 p-[10px] md:h-[390px] md:min-w-[220px] md:max-w-[220px] lg:h-[620px] lg:min-w-[380px] lg:max-w-[380px] lg:rounded-[40px] lg:p-[25px] xl:h-[710px] xl:min-w-[415px] xl:max-w-[415px]">
+      <Skeleton className="min-h-[120px] rounded-[10px] md:min-h-[200px] lg:min-h-[300px] lg:rounded-[20px] xl:min-h-[350px]" />
+      <div className="mt-[6px] flex h-full flex-col justify-between lg:mt-6">
+        <Skeleton className="min-h-[35px] md:min-h-14 lg:min-h-[82px] xl:min-h-[108px]" />
+        <Skeleton className="min-h-[57px] md:min-h-[92px] lg:min-h-[144px] xl:min-h-[156px]" />
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ type CategoriesState = {
 
 const initialState: CategoriesState = {
   data: [],
-  loading: false,
+  loading: true,
   error: null,
 };
 

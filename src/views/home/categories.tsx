@@ -49,7 +49,7 @@ export const CategoriesLoading: React.FC = () => {
         <h2 className="leading-tight text-black">Apa saja product</h2>
         <h2 className="text-green">Saryurmoms?</h2>
       </div>
-      <CategoryCardLoadingWrapper />;
+      <CategoryCardLoadingWrapper />
     </section>
   );
 };
