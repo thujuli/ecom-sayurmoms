@@ -8,6 +8,7 @@ import { Menu } from "lucide-react";
 
 const NavbarMenu: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
+  const [menuActive, setMenuActive] = useState("");
 
   return (
     <div className="flex flex-col lg:hidden">
@@ -21,7 +22,7 @@ const NavbarMenu: React.FC = () => {
       </button>
       <div
         className={cn(
-          "absolute left-0 top-[50px] z-20 w-full flex-col gap-2 bg-black/90 px-2 py-4 font-medium text-gray md:top-[100px] md:gap-4 md:px-4",
+          "absolute left-0 top-[50px] z-20 w-full flex-col gap-1 bg-black/90 text-gray md:top-[100px]",
           isActive ? "flex" : "hidden",
         )}
       >
@@ -29,7 +30,16 @@ const NavbarMenu: React.FC = () => {
           <Link
             key={idx}
             href={item.link}
-            onClick={() => setIsActive(!isActive)}
+            onClick={() => {
+              setIsActive(!isActive);
+              setMenuActive(item.name);
+            }}
+            className={cn(
+              "px-2 py-2 text-lg hover:bg-green hover:font-bold hover:text-black md:px-4 md:py-3",
+              menuActive === item.name
+                ? "bg-green px-2 py-2 text-lg font-bold text-black md:px-4 md:py-3"
+                : "",
+            )}
           >
             {item.name}
           </Link>
