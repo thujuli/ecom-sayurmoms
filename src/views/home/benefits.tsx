@@ -1,4 +1,4 @@
-import { benefits } from "@/lib/const";
+import { benefitItems } from "@/lib/const";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import benefitsMobile from "@/public/images/home/benefits-mobile-bg.png";
@@ -17,6 +17,7 @@ const Benefits: React.FC = () => {
             alt="Benefits Mobile Background"
             fill
             sizes="100vw"
+            placeholder="blur"
             className="rounded-bl-3xl rounded-br-3xl object-cover"
           />
         </AspectRatio>
@@ -30,7 +31,7 @@ const Benefits: React.FC = () => {
             </h2>
           </div>
           <div className="mt-5 grid grid-cols-4 gap-2 md:mt-8 md:gap-6">
-            {benefits.map((benefit, idx) => (
+            {benefitItems.map((benefit, idx) => (
               <div
                 key={idx}
                 className="flex flex-col items-center justify-center rounded border border-orange bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6"
@@ -60,6 +61,7 @@ const Benefits: React.FC = () => {
             alt="Benefits Desktop Background"
             fill
             sizes="100vw"
+            placeholder="blur"
             className="rounded-bl-3xl rounded-br-3xl object-cover "
           />
         </AspectRatio>
@@ -73,7 +75,7 @@ const Benefits: React.FC = () => {
             </h2>
           </div>
           <div className="mt-5 grid grid-cols-4 gap-2 md:mt-8 md:gap-6 lg:mt-12 lg:gap-10 xl:mt-16 xl:gap-14">
-            {benefits.map((benefit, idx) => (
+            {benefitItems.map((benefit, idx) => (
               <div
                 key={idx}
                 className="flex flex-col items-center justify-center rounded border border-orange bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6 lg:rounded-2xl lg:px-6 lg:py-7 xl:rounded-3xl xl:px-9 xl:py-12"

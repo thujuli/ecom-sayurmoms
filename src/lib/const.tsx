@@ -1,6 +1,15 @@
-import { Apple, HandCoins, Truck, Award } from "lucide-react";
+import {
+  Apple,
+  HandCoins,
+  Truck,
+  Award,
+  ShoppingCart,
+  UsersRound,
+  Rocket,
+  LineChart,
+} from "lucide-react";
 
-export const benefits = [
+export const benefitItems = [
   {
     title: "Segar dan Berkualitas",
     icon: Apple,
@@ -17,4 +26,11 @@ export const benefits = [
     title: "Lengkap dan Terpercaya",
     icon: Award,
   },
+];
+
+export const aboutUsItems = [
+  { icon: ShoppingCart, number: "45rb+", text: "Orders" },
+  { icon: UsersRound, number: "7rb+", text: "Customers" },
+  { icon: Rocket, number: "4", text: "Channels" },
+  { icon: LineChart, number: "60", text: "Avg Orders per Day" },
 ];
