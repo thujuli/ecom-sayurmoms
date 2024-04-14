@@ -18,7 +18,13 @@ const TestimonialCard: React.FC<Props> = (props) => {
     <div className="relative h-[180px] w-[165px] items-center justify-center rounded-[20px] border-l-2 border-t-2 border-[#A7BB09] bg-[#191919]/30 p-2 text-center backdrop-blur-md md:h-[240px] md:w-[200px] lg:h-[420px] lg:w-[380px] lg:rounded-[40px] lg:border-l-4 lg:border-t-4 lg:p-6">
       <div className="mt-3 flex items-center justify-center md:mt-2 lg:mb-3">
         <div className="relative h-[53px] w-[53px] rounded-full md:h-[72px] md:w-[72px] lg:h-[127px] lg:w-[127px]">
-          <Image src={avatar} alt="Avatar" fill objectFit="cover" />
+          <Image
+            src={avatar}
+            alt="Avatar"
+            fill
+            className="object-cover"
+            placeholder="blur"
+          />
         </div>
       </div>
       <div className="h-[50px] pt-2 lg:h-[120px] lg:pt-4">

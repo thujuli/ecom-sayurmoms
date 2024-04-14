@@ -16,6 +16,7 @@ const Testimonials: React.FC = () => {
           src={backgroundDesktop}
           alt="Testimonials Desktop Background"
           fill
+          placeholder="blur"
           className="object-cover"
         />
         <div className="relative z-10 lg:py-24">
@@ -44,6 +45,7 @@ const Testimonials: React.FC = () => {
           src={backgroundMobile}
           alt="Testimonials Mobile Background"
           fill
+          placeholder="blur"
           className="absolute inset-0 z-0 object-cover"
         />
         <div className="relative z-10 py-6">
