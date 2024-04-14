@@ -20,10 +20,11 @@ type Props = {
 const CarouselItems: React.FC<Props> = (props) => {
   const { carousels } = props;
 
-  const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
+  const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
 
   return (
     <Carousel
+      opts={{ loop: true }}
       plugins={[plugin.current]}
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
