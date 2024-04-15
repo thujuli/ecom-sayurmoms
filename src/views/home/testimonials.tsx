@@ -23,10 +23,10 @@ const Testimonials: React.FC = () => {
           <p className="pb-4 text-center text-3xl font-medium text-white">
             Ulasan
           </p>
-          <h2 className="mb-16 text-center text-5xl font-extrabold text-white xl:text-6xl">
+          <h2 className="mb-16 text-center text-5xl font-extrabold text-white">
             Apa kata mereka{" "}
             <div className="mt-4">
-              tentang <span className="text-[#A7BB09]">Sayurmoms?</span>{" "}
+              tentang <span className="text-[#A7BB09]">Sayurmoms?</span>
             </div>
           </h2>
           <Marquee pauseOnHover={true} speed={30} gradient={false}>

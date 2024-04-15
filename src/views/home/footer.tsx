@@ -36,11 +36,11 @@ const Footer: React.FC = () => {
             alt="FAQ Illustration"
             width={400}
             height={400}
-            className="h-[100px] w-[100px] md:h-[140px] md:w-[140px] lg:h-[240px] lg:w-[240px] xl:h-[300px] xl:w-[300px]"
+            className="h-[100px] w-[100px] md:h-[140px] md:w-[140px] lg:h-[240px] lg:w-[240px]"
           />
-          <h2 className="mr-8 text-left text-xl font-extrabold md:text-2xl lg:mr-0 lg:text-5xl xl:text-6xl">
+          <h2 className="mr-8 text-left text-xl font-extrabold md:text-2xl lg:mr-0 lg:text-5xl">
             {`Frequently `}
-            <br className="hidden xl:block" />
+            <br className="hidden lg:block" />
             Asked
             <br />
             Questions
@@ -52,15 +52,15 @@ const Footer: React.FC = () => {
               <AccordionItem
                 key={idx}
                 value={`item-${idx}`}
-                className="mb-3 w-full max-w-[530px] rounded-[10px] bg-[#181818] py-2 lg:mb-5 lg:max-w-[800px] lg:rounded-[40px] lg:py-0 xl:max-w-[1200.6px]"
+                className="mb-3 w-full rounded-[10px] bg-[#181818] py-2 md:w-[480px] lg:mb-5 lg:w-[920px] lg:rounded-[40px] lg:py-0"
               >
-                <AccordionTrigger className="font-sans-jakarta py-2 pl-4 pr-1 text-left text-sm font-medium leading-[20px] text-white md:text-base lg:ml-10 lg:py-11 lg:pr-0 lg:text-3xl lg:font-bold lg:leading-[47.52px] xl:text-4xl">
+                <AccordionTrigger className="font-sans-jakarta py-2 pl-4 pr-1 text-left text-sm font-medium leading-[20px] text-white md:text-base lg:ml-10 lg:py-11 lg:pr-0 lg:text-3xl lg:font-bold lg:leading-[47.52px]">
                   <span>{item.question}</span>
                 </AccordionTrigger>
                 <AccordionContent className="leading-3 text-white lg:leading-10">
                   <div className="py-2 lg:py-4">
                     <div className="mb-2 ml-4 w-[90%] border-b border-[#cbe023] lg:mb-4 lg:ml-10 lg:w-[1120px]" />
-                    <div className="-mb-6 ml-4 mr-4 whitespace-pre-line pt-2 text-[10px] font-normal md:text-sm lg:mb-0 lg:ml-12 lg:mr-[60px] lg:pt-4 lg:text-xl lg:font-medium xl:text-3xl">
+                    <div className="-mb-6 ml-4 mr-4 whitespace-pre-line pt-2 text-[10px] font-normal md:text-sm lg:mb-0 lg:ml-12 lg:mr-[60px] lg:pt-4 lg:text-xl lg:font-medium">
                       {item.answer.split("\n").map((line, i) => (
                         <p key={i} className="mb-1 lg:mb-2">
                           {line.startsWith("•") ? "• " : ""}
@@ -80,6 +80,7 @@ const Footer: React.FC = () => {
             alt="FAQ Mobile Background"
             width={397}
             height={135}
+            placeholder="blur"
             className="w-full"
           />
         </div>
@@ -148,11 +149,10 @@ const Footer: React.FC = () => {
                 <Image
                   src={tractorIllustration}
                   alt="Tractor Image"
-                  layout="responsive"
                   width={428}
                   height={143}
-                  objectFit="cover"
-                  style={{ marginTop: "40px" }}
+                  placeholder="blur"
+                  className="mt-10 object-cover"
                 />
               </div>
             </div>
@@ -166,13 +166,13 @@ const Footer: React.FC = () => {
                 height={171}
               />
               <div className="flex flex-col gap-8">
-                <h3 className="mt-4 text-4xl font-bold text-black xl:mb-4">
+                <h3 className="mt-4 text-4xl font-bold text-black">
                   Kontak Kami
                 </h3>
                 <div className="flex flex-row flex-wrap items-center gap-5 lg:flex-col lg:gap-8">
                   <div className="flex items-center gap-4">
                     <Phone className="h-10 w-10 text-[#707070]" />
-                    <p className="text-[#707070] lg:text-2xl xl:text-3xl">
+                    <p className="text-[#707070] lg:text-2xl">
                       (021) 456345079
                     </p>
                   </div>
@@ -180,9 +180,7 @@ const Footer: React.FC = () => {
               </div>
 
               <div className="flex flex-col gap-8 lg:mt-[100px]">
-                <h3 className="text-4xl font-bold text-black xl:mb-4">
-                  E-Commerce
-                </h3>
+                <h3 className="text-4xl font-bold text-black">E-Commerce</h3>
                 <div className="flex gap-8">
                   {eCommerceItems.map((item, idx) => (
                     <Image
@@ -198,8 +196,8 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <FooterCategoryCardDesktop />
-            <div className="flex w-full flex-col items-center lg:w-auto lg:items-start lg:gap-8 lg:pl-4 xl:pl-8">
-              <div className="hidden flex-col lg:flex lg:gap-6 xl:gap-10">
+            <div className="flex w-full flex-col items-center lg:w-auto lg:items-start lg:gap-8 lg:pl-4">
+              <div className="hidden flex-col lg:flex lg:gap-6">
                 <h3 className="mb-4 text-2xl font-bold text-black lg:text-4xl">
                   Useful Links
                 </h3>
@@ -213,7 +211,7 @@ const Footer: React.FC = () => {
                 <h3 className="text-4xl font-bold text-black">
                   Metode Pembayaran
                 </h3>
-                <div className="grid grid-cols-2 items-center gap-4 xl:grid-cols-3">
+                <div className="grid grid-cols-3 items-center gap-4">
                   {paymentMethods.map((item, idx) => (
                     <Image
                       key={idx}
@@ -233,7 +231,8 @@ const Footer: React.FC = () => {
             src={tractorIllustration}
             alt="Tractor Image"
             fill
-            objectFit="cover"
+            placeholder="blur"
+            className="object-cover"
           />
         </div>
       </div>

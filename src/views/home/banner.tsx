@@ -6,7 +6,7 @@ const Banner: React.FC = async () => {
   const banner = await getBanner();
 
   return (
-    <section id="banner">
+    <section id="banner" className="custom-h-screen">
       <BannerCard title={banner.title.rendered} image={banner.acf.image} />
     </section>
   );
