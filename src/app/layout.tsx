@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: metadataDetail.description,
 };
 
-export const revalidate = 3600;
+export const revalidate = 0;
 
 export default function RootLayout({
   children,
@@ -34,8 +34,10 @@ export default function RootLayout({
             jakarta.variable,
           )}
         >
-          <Navbar />
-          <Container>{children}</Container>
+          <Container>
+            <Navbar />
+            {children}
+          </Container>
         </body>
       </html>
     </StoreProvider>

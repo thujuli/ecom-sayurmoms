@@ -8,7 +8,7 @@ import AboutUsCard from "@/components/home/about-us-card";
 
 const AboutUs: React.FC = () => {
   return (
-    <section id="about-us" className="pt-3 lg:py-24">
+    <section id="about-us" className="pt-3 lg:py-20">
       <div className="flex flex-col items-center lg:flex-row">
         <div className="order-2 w-full lg:order-1 lg:mb-0 lg:w-5/12 xl:w-1/2">
           <Image
@@ -19,10 +19,10 @@ const AboutUs: React.FC = () => {
           />
         </div>
         <div className="order-1 mt-8 w-full text-center lg:order-2 lg:mt-0 lg:w-7/12 xl:w-1/2">
-          <h2 className="mb-0 text-sm font-medium text-[#909090] md:mb-2 md:text-base lg:text-3xl xl:text-4xl">
+          <h2 className="mb-0 text-sm font-medium text-[#909090] md:mb-2 md:text-base lg:text-3xl">
             Tentang Kami
           </h2>
-          <h2 className="text-darkGreen mb-8 text-xl font-extrabold md:text-2xl lg:text-5xl xl:text-6xl">
+          <h2 className="mb-8 text-xl font-extrabold text-darkGreen md:text-2xl lg:text-5xl">
             Sayurmoms
           </h2>
           <div className="relative mb-8">
@@ -47,7 +47,7 @@ const AboutUs: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="mx-4 space-y-3 px-4 text-[10px] text-black md:text-base lg:mx-0 lg:space-y-6 lg:px-0 lg:text-lg xl:text-xl">
+          <div className="mx-4 space-y-3 px-4 text-[10px] text-black md:text-base lg:mx-0 lg:space-y-6 lg:px-0 lg:text-lg">
             <p>{aboutUsDetail.p1}</p>
             <p>{aboutUsDetail.p2}</p>
           </div>

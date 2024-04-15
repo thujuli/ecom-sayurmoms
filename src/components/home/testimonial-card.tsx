@@ -28,16 +28,16 @@ const TestimonialCard: React.FC<Props> = (props) => {
         </div>
       </div>
       <div className="h-[50px] pt-2 lg:h-[120px] lg:pt-4">
-        <p className="line-clamp-3 text-[10px] text-white md:text-sm lg:text-lg xl:text-xl">
+        <p className="line-clamp-3 text-[10px] text-white md:text-sm lg:text-lg">
           {testimonial}
         </p>
       </div>
-      <div className="flex h-[15px] items-center justify-center pt-6 md:pt-12 lg:h-[32px] lg:pb-3 lg:pt-8 xl:h-[40px]">
-        <p className="mr-3 text-[8px] font-light text-[#909090] md:text-[12px] md:font-normal lg:mr-8 lg:text-lg xl:text-xl">
+      <div className="flex h-[15px] items-center justify-center pt-6 md:pt-12 lg:h-[32px] lg:pb-3 lg:pt-8">
+        <p className="mr-3 text-[8px] font-light text-[#909090] md:text-[12px] md:font-normal lg:mr-8 lg:text-lg">
           {name}
         </p>
-        <div className="h-3 border-l lg:h-6 xl:h-8" />
-        <p className="ml-3 text-[8px] font-light text-[#909090] md:text-[12px] md:font-normal lg:ml-4 lg:text-lg xl:text-xl">
+        <div className="h-3 border-l lg:h-6" />
+        <p className="ml-3 text-[8px] font-light text-[#909090] md:text-[12px] md:font-normal lg:ml-4 lg:text-lg">
           {company}
         </p>
       </div>
@@ -46,7 +46,7 @@ const TestimonialCard: React.FC<Props> = (props) => {
           <Star
             key={i}
             className={cn(
-              "h-[11px] w-[11px] md:h-4 md:w-4 lg:mr-2 lg:h-6 lg:w-6 xl:h-8 xl:w-8",
+              "h-[11px] w-[11px] md:h-4 md:w-4 lg:mr-2 lg:h-6 lg:w-6",
               i < Math.floor(rating + 0.5)
                 ? "fill-[#A7BB09]"
                 : "fill-[#909090]",
@@ -55,7 +55,7 @@ const TestimonialCard: React.FC<Props> = (props) => {
             strokeWidth="0"
           />
         ))}
-        <span className="ml-1 text-[7px] font-bold text-[#909090] md:text-sm lg:ml-2 lg:text-xl lg:font-semibold xl:text-2xl">
+        <span className="ml-1 text-[7px] font-bold text-[#909090] md:text-sm lg:ml-2 lg:text-xl lg:font-semibold">
           {rating.toFixed(1)}
         </span>
       </div>

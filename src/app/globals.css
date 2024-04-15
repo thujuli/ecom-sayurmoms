@@ -85,4 +85,17 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .custom-h-screen {
+    height: auto; /* Default height for mobile and smaller screens */
+  }
+
+  @media (min-width: 1280px) and (max-width: 1536px) {
+    /* Tailwind's 'xl' breakpoint */
+    .custom-h-screen {
+      height: calc(
+        100vh - 80px
+      ); /* Only applied at 'xl' breakpoint and above */
+    }
+  }
 }
