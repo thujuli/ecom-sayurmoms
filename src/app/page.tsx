@@ -5,6 +5,7 @@ import Carousels from "@/views/home/carousels";
 import Categories from "@/views/home/categories";
 import ECommerce from "@/views/home/e-commerce";
 import FeaturedProducts from "@/views/home/featured-products";
+import Footer from "@/views/home/footer";
 import Testimonials from "@/views/home/testimonials";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Banner />
       <AboutUs />
       <Testimonials />
+      <Footer />
     </>
   );
 }
