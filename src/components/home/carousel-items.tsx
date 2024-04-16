@@ -33,7 +33,7 @@ const CarouselItems: React.FC<Props> = (props) => {
       <CarouselContent>
         {carousels.map((carousel) => (
           <CarouselItem key={carousel.id} className="custom-h-screen">
-            <AspectRatio ratio={1536 / 800} className="custom-h-screen">
+            <AspectRatio ratio={1536 / 782} className="custom-h-screen">
               <Image
                 src={carousel.acf.image}
                 alt={carousel.title.rendered}

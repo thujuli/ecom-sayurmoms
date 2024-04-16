@@ -73,6 +73,14 @@
   body {
     @apply bg-background text-foreground;
   }
+  :root::-webkit-scrollbar {
+    display: none;
+  }
+
+  :root {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 }
 
 @layer utilities {

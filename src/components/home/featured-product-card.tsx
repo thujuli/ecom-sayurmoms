@@ -4,7 +4,8 @@ import { useAppSelector } from "@/lib/hooks";
 import { Product } from "@/lib/types";
 import React, { useEffect, useState } from "react";
 import CategoryButton, { CategoryButtonLoading } from "./category-button";
-import ProductCard, { ProductCardLoading } from "../product-card";
+import { ProductCardLoading } from "../product-card";
+import ProductCardWrapper from "../product-card-wrapper";
 
 const FeaturedProductCardWrapper = () => {
   const { data: categoriesData, loading: loadingCategories } = useAppSelector(
@@ -66,7 +67,7 @@ const FeaturedProductCardWrapper = () => {
       <div className="flex justify-center">
         <div className="no-scrollbar flex flex-nowrap gap-[10px] overflow-x-auto md:gap-4 lg:gap-7 xl:gap-8">
           {productsByCategory.map((product) => (
-            <ProductCard
+            <ProductCardWrapper
               key={product.id}
               image={product.acf.image}
               price={Number(product.acf.price)}
