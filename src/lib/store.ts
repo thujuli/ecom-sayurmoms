@@ -1,5 +1,6 @@
 import categoriesReducer from "./features/categoriesSlice";
 import featuredProductsReducer from "./features/featuredProductsSlice";
+import cartSliceReducer from "./features/cartSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const makeStore = () => {
@@ -7,6 +8,7 @@ export const makeStore = () => {
     reducer: {
       categories: categoriesReducer,
       featuredProducts: featuredProductsReducer,
+      cart: cartSliceReducer,
     },
   });
 };
