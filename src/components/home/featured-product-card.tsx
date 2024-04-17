@@ -75,6 +75,7 @@ const FeaturedProductCardWrapper = () => {
               sold={Number(product.acf.sold)}
               title={product.title.rendered}
               discount={Number(product.acf.discount)}
+              sku={product.acf.sku}
             />
           ))}
         </div>

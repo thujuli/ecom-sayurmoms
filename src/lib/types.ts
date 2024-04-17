@@ -34,6 +34,7 @@ export type Product = {
     rendered: string;
   };
   acf: {
+    sku: string;
     category: {
       term_id: number;
       name: string;
@@ -52,4 +53,13 @@ export type Product = {
     rating: string;
     discount?: string;
   };
+};
+
+export type Cart = {
+  sku: string;
+  title: string;
+  image: string;
+  price: number;
+  discount?: number;
+  qty: number;
 };

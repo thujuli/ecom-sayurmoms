@@ -3,14 +3,71 @@
 import logo from "@/public/images/logo.png";
 import { menuItems } from "@/lib/helper";
 import NavbarMenu from "@/components/navbar-menu";
+import { cn, priceToIDR } from "@/lib/utils";
+import { useAppSelector } from "@/lib/hooks";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ShoppingCart, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import CartItemCard from "@/components/cart-item-card";
+
+export const CartButton: React.FC = () => {
+  const { data } = useAppSelector((state) => state.cart);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null; // or a placeholder component
+  }
+
+  return (
+    <div className="relative rounded-sm bg-green p-1 md:rounded-lg md:p-2">
+      <ShoppingCart
+        width={16}
+        height={16}
+        color="black"
+        className="md:hidden"
+      />
+      <ShoppingCart
+        width={24}
+        height={24}
+        color="black"
+        className="hidden md:inline"
+      />
+      {data.length ? (
+        <div className="absolute -right-3 -top-3 flex h-5 w-5 items-center justify-center rounded-full bg-orange text-[10px] font-bold text-black md:-right-4 md:-top-4 md:h-8 md:w-8 md:text-sm lg:text-base">
+          {data.length > 99 ? 99 : data.length}
+        </div>
+      ) : null}
+    </div>
+  );
+};
 
 const Navbar: React.FC = () => {
+  const { data } = useAppSelector((state) => state.cart);
   const [menuActive, setMenuActive] = useState("");
+
+  const totalAmount = data.reduce((prev, cur) => {
+    const price = cur.discount
+      ? cur.price - (cur.price * cur.discount) / 100
+      : cur.price;
+
+    return prev + price * cur.qty;
+  }, 0);
 
   return (
     <header id="navbar" className="relative h-[50px] md:h-[80px]">
@@ -50,23 +107,50 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        <button
-          type="button"
-          className="rounded-sm bg-green p-1 md:rounded-lg md:p-2"
-        >
-          <ShoppingCart
-            width={16}
-            height={16}
-            color="black"
-            className="md:hidden"
-          />
-          <ShoppingCart
-            width={24}
-            height={24}
-            color="black"
-            className="hidden md:inline"
-          />
-        </button>
+        <Drawer direction="right">
+          <DrawerTrigger>
+            <CartButton />
+          </DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-bold md:text-2xl">Keranjang</h2>
+                  <DrawerClose>
+                    <button className="rounded-lg border p-1 drop-shadow md:p-2">
+                      <X className="h-4 w-4" />
+                    </button>
+                  </DrawerClose>
+                </div>
+              </DrawerTitle>
+            </DrawerHeader>
+            <div className="no-scrollbar flex h-full flex-col gap-2 overflow-scroll bg-[#EAEAEA] py-2">
+              {data.map((product, idx) => (
+                <CartItemCard
+                  key={idx}
+                  image={product.image}
+                  price={product.price}
+                  qty={product.qty}
+                  title={product.title}
+                  discount={product.discount}
+                  sku={product.sku}
+                />
+              ))}
+            </div>
+            <DrawerFooter>
+              <Button className="relative w-full font-medium">
+                <span className="absolute left-2 rounded bg-white px-1 text-[10px] text-black lg:text-[12px]">
+                  {data.length}
+                </span>
+                Checkout
+                <span className="absolute right-2 text-[10px] lg:text-[12px]">
+                  Rp.
+                  {priceToIDR(totalAmount)}
+                </span>
+              </Button>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
       </nav>
     </header>
   );

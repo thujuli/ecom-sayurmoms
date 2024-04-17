@@ -12,6 +12,10 @@ import {
 } from "@/components/ui/dialog";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useAppDispatch, useAppSelector, useCounter } from "@/lib/hooks";
+import { setCart } from "@/lib/features/cartSlice";
+import { useToast } from "./ui/use-toast";
+import { Cart } from "@/lib/types";
 
 interface Props {
   title: string;
@@ -19,38 +23,34 @@ interface Props {
   price: number;
   sold: number;
   rating: number;
+  sku: string;
   discount?: number;
 }
 
 const ProductCardWrapper: React.FC<Props> = (props) => {
-  const { image, price, rating, sold, title, discount } = props;
+  const { image, price, rating, sold, title, discount, sku } = props;
 
   const priceIDR = priceToIDR(price);
   const fixPrice = discount ? price - (price * discount) / 100 : price;
 
-  const [counter, setCounter] = useState(1);
-  const [total, setTotal] = useState(fixPrice);
+  const dispatch = useAppDispatch();
+  const { data } = useAppSelector((state) => state.cart);
+  const { toast } = useToast();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const {
+    counter,
+    total,
+    handleDecrement,
+    handleIncrement,
+    setCounter,
+    setTotal,
+  } = useCounter(1, fixPrice);
 
   const handleOpenDialog = () => setIsDialogOpen(true);
   const handleCloseDialog = () => {
     setCounter(1);
     setTotal(fixPrice);
     setIsDialogOpen(false);
-  };
-
-  const handleIncrement = () => {
-    const totalCounter = counter + 1;
-
-    setCounter(totalCounter);
-    setTotal(fixPrice * totalCounter);
-  };
-
-  const handleDecrement = () => {
-    const totalCounter = counter - 1;
-
-    setCounter(totalCounter);
-    setTotal(fixPrice * totalCounter);
   };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +61,34 @@ const ProductCardWrapper: React.FC<Props> = (props) => {
   };
 
   const handleAddToCart = () => {
+    const newCart = [...data];
+    const addProduct: Cart = {
+      sku,
+      title,
+      price,
+      qty: counter,
+      image,
+      discount,
+    };
+
+    const index = data.findIndex((product) => product.sku === addProduct.sku);
+
+    if (index === -1) {
+      newCart.push(addProduct);
+    } else {
+      const updatedProduct = {
+        ...newCart[index],
+        qty: newCart[index].qty + addProduct.qty,
+      };
+      newCart[index] = updatedProduct;
+    }
+
+    dispatch(setCart(newCart));
+    localStorage.setItem("cart", JSON.stringify(newCart));
     handleCloseDialog();
+    toast({
+      description: "Product successfully added to cart",
+    });
   };
 
   return (
@@ -115,7 +142,7 @@ const ProductCardWrapper: React.FC<Props> = (props) => {
                   <button
                     type="button"
                     disabled={counter <= 1}
-                    onClick={handleDecrement}
+                    onClick={() => handleDecrement()}
                     className="h-8 w-8 rounded border bg-gray font-bold focus:bg-green disabled:text-black/20 md:h-10 md:w-10"
                   >
                     -
@@ -128,7 +155,7 @@ const ProductCardWrapper: React.FC<Props> = (props) => {
                   />
                   <button
                     type="button"
-                    onClick={handleIncrement}
+                    onClick={() => handleIncrement()}
                     className="h-8 w-8 rounded border bg-gray font-bold focus:bg-green md:h-10 md:w-10"
                   >
                     +
