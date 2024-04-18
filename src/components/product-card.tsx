@@ -20,6 +20,24 @@ const ProductCard: React.FC<Props> = (props) => {
   const priceIDR = priceToIDR(price);
   const soldIDN = numberFormat(sold);
 
+  const renderRatings = () => {
+    return Array(5)
+      .fill(null)
+      .map((_, idx) => (
+        <Star
+          key={idx}
+          fill="none"
+          strokeWidth="0"
+          width={32}
+          height={32}
+          className={cn(
+            "h-3 w-3 md:h-[32px] md:w-[32px]",
+            idx < Math.round(rating) ? "fill-[#A7BB09]" : "fill-[#909090]",
+          )}
+        />
+      ));
+  };
+
   return (
     <div
       onClick={onClick}
@@ -57,55 +75,20 @@ const ProductCard: React.FC<Props> = (props) => {
           {/* Price */}
           <div className="my-[2px] flex justify-between text-[10px] font-medium text-[#181818] md:text-base lg:my-2 lg:text-xl">
             {discount ? (
-              <p>Rp.{priceToIDR(price - (price * discount) / 100)}</p>
-            ) : null}
-            <p>
-              {discount ? (
+              <>
+                <p>Rp.{priceToIDR(price - (price * discount) / 100)}</p>
                 <s className="text-[#909090]">Rp.{priceIDR}</s>
-              ) : (
-                `Rp.${priceIDR}`
-              )}
-            </p>
+              </>
+            ) : (
+              <p>Rp.${priceIDR}</p>
+            )}
           </div>
 
           {/* Rating and Sold */}
           <div className="grid grid-cols-2 items-center justify-start gap-x-2 md:gap-x-3 lg:gap-x-4">
             {/* Star */}
             <div className="flex items-center justify-start gap-[1px]">
-              {Array(5)
-                .fill(null)
-                .map((_, idx) => (
-                  <Star
-                    key={idx}
-                    className={cn(
-                      "md:hidden",
-                      idx < Math.round(rating)
-                        ? "fill-[#A7BB09]"
-                        : "fill-[#909090]",
-                    )}
-                    fill="none"
-                    strokeWidth="0"
-                    width={12}
-                    height={12}
-                  />
-                ))}
-              {Array(5)
-                .fill(null)
-                .map((_, idx) => (
-                  <Star
-                    key={idx}
-                    className={cn(
-                      "hidden md:inline-block",
-                      idx < Math.round(rating)
-                        ? "fill-[#A7BB09]"
-                        : "fill-[#909090]",
-                    )}
-                    fill="none"
-                    strokeWidth="0"
-                    width={32}
-                    height={32}
-                  />
-                ))}
+              {renderRatings()}
             </div>
             {/* Rating */}
             <span className="text-start text-[10px] font-bold text-[#909090] md:text-base lg:text-xl">

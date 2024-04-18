@@ -14,8 +14,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector, useCounter } from "@/lib/hooks";
 import { setCart } from "@/lib/features/cartSlice";
-import { useToast } from "./ui/use-toast";
 import { Cart } from "@/lib/types";
+import { Minus, Plus } from "lucide-react";
+import { toast } from "sonner";
 
 interface Props {
   title: string;
@@ -35,7 +36,6 @@ const ProductCardWrapper: React.FC<Props> = (props) => {
 
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.cart);
-  const { toast } = useToast();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const {
     counter,
@@ -86,8 +86,8 @@ const ProductCardWrapper: React.FC<Props> = (props) => {
     dispatch(setCart(newCart));
     localStorage.setItem("cart", JSON.stringify(newCart));
     handleCloseDialog();
-    toast({
-      description: "Product successfully added to cart",
+    toast(addProduct.title, {
+      description: "Berhasil ditambahkan ke keranjang!",
     });
   };
 
@@ -123,42 +123,43 @@ const ProductCardWrapper: React.FC<Props> = (props) => {
               {/* price */}
               <div className="my-[2px] flex justify-between text-sm font-medium text-[#181818] md:text-base lg:my-2 lg:text-lg">
                 {discount ? (
-                  <p>Rp.{priceToIDR(price - (price * discount) / 100)}</p>
-                ) : null}
-                <p>
-                  {discount ? (
+                  <>
+                    <p>Rp.{priceToIDR(price - (price * discount) / 100)}</p>
                     <s className="text-[#909090]">Rp.{priceIDR}</s>
-                  ) : (
-                    `Rp.${priceIDR}`
-                  )}
-                </p>
+                  </>
+                ) : (
+                  <p>Rp.${priceIDR}</p>
+                )}
               </div>
               {/* counter */}
               <div className="flex items-center justify-between font-medium">
                 <div>
                   <p className="md:text-lg lg:text-xl">Jumlah:</p>
                 </div>
-                <div className="flex w-32 items-center justify-center md:text-lg lg:text-xl">
+                <div className="flex w-32 items-center justify-center md:w-36 md:text-lg lg:text-xl">
+                  {/* button decrement */}
                   <button
                     type="button"
                     disabled={counter <= 1}
                     onClick={() => handleDecrement()}
-                    className="h-8 w-8 rounded border bg-gray font-bold focus:bg-green disabled:text-black/20 md:h-10 md:w-10"
+                    className="flex h-8 w-8 items-center justify-center rounded border bg-gray font-bold focus:bg-green disabled:text-black/20 md:h-10 md:w-10"
                   >
-                    -
+                    <Minus className="h-4 w-4 md:h-5 md:w-5" />
                   </button>
+                  {/* input qty */}
                   <input
                     type="number"
                     value={counter}
                     className="h-8 w-12 text-center md:h-10 md:w-14 lg:w-16"
                     onChange={handleChangeInput}
                   />
+                  {/* button increment */}
                   <button
                     type="button"
                     onClick={() => handleIncrement()}
-                    className="h-8 w-8 rounded border bg-gray font-bold focus:bg-green md:h-10 md:w-10"
+                    className="flex h-8 w-8 items-center justify-center rounded border bg-gray font-bold focus:bg-green md:h-10 md:w-10"
                   >
-                    +
+                    <Plus className="h-4 w-4 md:h-5 md:w-5" />
                   </button>
                 </div>
               </div>

@@ -2,7 +2,7 @@
 
 import { priceToIDR } from "@/lib/utils";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 
 import { Plus, Minus, Trash2 } from "lucide-react";
 import { useAppDispatch, useAppSelector, useCounter } from "@/lib/hooks";
@@ -67,18 +67,17 @@ const CartItemCard: React.FC<Props> = (props) => {
         <div>
           <div className="flex gap-6 py-2 text-xs font-medium text-[#181818] md:text-sm">
             {discount ? (
-              <p>Rp.{priceToIDR(price - (price * discount) / 100)}</p>
-            ) : null}
-            <p>
-              {discount ? (
+              <>
+                <p>Rp.{priceToIDR(price - (price * discount) / 100)}</p>
                 <s className="text-[#909090]">Rp.{priceIDR}</s>
-              ) : (
-                `Rp.${priceIDR}`
-              )}
-            </p>
+              </>
+            ) : (
+              <p>Rp.${priceIDR}</p>
+            )}
           </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
+              {/* button decrement */}
               <button
                 type="button"
                 disabled={counter <= 1}
@@ -87,7 +86,9 @@ const CartItemCard: React.FC<Props> = (props) => {
               >
                 <Minus className="h-4 w-4" />
               </button>
+              {/* show qty */}
               <span className="h-6 w-12 text-center lg:h-7">{counter}</span>
+              {/* button increment */}
               <button
                 type="button"
                 onClick={() => handleIncrement(true, index)}
@@ -96,6 +97,7 @@ const CartItemCard: React.FC<Props> = (props) => {
                 <Plus className="h-4 w-4" />
               </button>
             </div>
+            {/* show total price */}
             <span className="text-xs font-bold md:text-sm">
               Rp.{priceToIDR(total)}
             </span>

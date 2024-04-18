@@ -69,42 +69,56 @@ const Navbar: React.FC = () => {
     return prev + price * cur.qty;
   }, 0);
 
+  const renderMenuItems = () => {
+    return menuItems.map((item, idx) => (
+      <Link
+        key={idx}
+        href={item.link}
+        onClick={() => setMenuActive(item.name)}
+        className={cn(
+          "rounded-full p-2 hover:bg-green hover:font-bold hover:text-black xl:px-4",
+          menuActive === item.name
+            ? "rounded-full bg-green p-2 font-bold text-black xl:px-4"
+            : "",
+        )}
+      >
+        {item.name}
+      </Link>
+    ));
+  };
+
+  const renderCartItems = () => {
+    return data.map((product, idx) => (
+      <CartItemCard
+        key={idx}
+        image={product.image}
+        price={product.price}
+        qty={product.qty}
+        title={product.title}
+        discount={product.discount}
+        sku={product.sku}
+      />
+    ));
+  };
+
   return (
     <header id="navbar" className="relative h-[50px] md:h-[80px]">
       <nav className="fixed z-50 flex h-[50px] w-full items-center justify-between bg-black px-5 text-white md:h-[80px] lg:px-[70px]">
+        {/* Menu for mobile */}
         <NavbarMenu />
-        {/* image for mobile and tablet */}
+
+        {/* logo */}
         <Image
           src={logo}
           alt="Logo Sayurmoms"
           width={130}
           height={30}
-          className="object-contain md:hidden"
+          className="h-[30px] w-[130px] object-contain md:h-[80px] md:w-[170px]"
         />
-        {/* image for laptop and desktop */}
-        <Image
-          src={logo}
-          alt="Logo Sayurmoms"
-          width={170}
-          height={100}
-          className="hidden object-contain md:inline"
-        />
+
+        {/* Menu for desktop */}
         <div className="hidden text-gray lg:flex lg:text-xl xl:gap-2 xl:text-2xl">
-          {menuItems.map((item, idx) => (
-            <Link
-              key={idx}
-              href={item.link}
-              onClick={() => setMenuActive(item.name)}
-              className={cn(
-                "rounded-full p-2 hover:bg-green hover:font-bold hover:text-black xl:px-4",
-                menuActive === item.name
-                  ? "rounded-full bg-green p-2 font-bold text-black xl:px-4"
-                  : "",
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {renderMenuItems()}
         </div>
 
         <Drawer direction="right">
@@ -124,29 +138,31 @@ const Navbar: React.FC = () => {
                 </div>
               </DrawerTitle>
             </DrawerHeader>
+
             <div className="no-scrollbar flex h-full flex-col gap-2 overflow-scroll bg-[#EAEAEA] py-2">
-              {data.map((product, idx) => (
-                <CartItemCard
-                  key={idx}
-                  image={product.image}
-                  price={product.price}
-                  qty={product.qty}
-                  title={product.title}
-                  discount={product.discount}
-                  sku={product.sku}
-                />
-              ))}
+              {renderCartItems()}
             </div>
+
             <DrawerFooter>
-              <Button className="relative w-full font-medium">
-                <span className="absolute left-2 rounded bg-white px-1 text-[10px] text-black lg:text-[12px]">
-                  {data.length}
-                </span>
-                Checkout
-                <span className="absolute right-2 text-[10px] lg:text-[12px]">
-                  Rp.
-                  {priceToIDR(totalAmount)}
-                </span>
+              <Button
+                type="button"
+                disabled={!data.length}
+                className="relative w-full font-medium"
+              >
+                {data.length ? (
+                  <>
+                    <span className="absolute left-2 rounded bg-white px-1 text-[10px] text-black lg:text-[12px]">
+                      {data.length}
+                    </span>
+                    <span>Checkout</span>
+                    <span className="absolute right-2 text-[10px] lg:text-[12px]">
+                      Rp.
+                      {priceToIDR(totalAmount)}
+                    </span>
+                  </>
+                ) : (
+                  <span>Checkout</span>
+                )}
               </Button>
             </DrawerFooter>
           </DrawerContent>

@@ -7,6 +7,17 @@ import React from "react";
 import AboutUsCard from "@/components/home/about-us-card";
 
 const AboutUs: React.FC = () => {
+  const renderAboutUsItems = () => {
+    return aboutUsItems.map((item, idx) => (
+      <AboutUsCard
+        key={idx}
+        icon={item.icon}
+        number={item.number}
+        text={item.text}
+      />
+    ));
+  };
+
   return (
     <section id="about-us" className="pt-3 lg:py-20">
       <div className="flex flex-col items-center lg:flex-row">
@@ -37,14 +48,7 @@ const AboutUs: React.FC = () => {
             </div>
 
             <div className="z-10 flex justify-center gap-3 px-2 lg:px-0">
-              {aboutUsItems.map((item, idx) => (
-                <AboutUsCard
-                  key={idx}
-                  icon={item.icon}
-                  number={item.number}
-                  text={item.text}
-                />
-              ))}
+              {renderAboutUsItems()}
             </div>
           </div>
           <div className="mx-4 space-y-3 px-4 text-[10px] text-black md:text-base lg:mx-0 lg:space-y-6 lg:px-0 lg:text-lg">

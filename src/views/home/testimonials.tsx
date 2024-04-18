@@ -8,37 +8,24 @@ import TestimonialCard from "@/components/home/testimonial-card";
 import Marquee from "react-fast-marquee";
 
 const Testimonials: React.FC = () => {
+  const renderMobileTestimonials = () => {
+    return testimonialItems.map((testimonial, idx) => (
+      <div key={idx} className="mx-2 sm:mx-3">
+        <TestimonialCard {...testimonial} />
+      </div>
+    ));
+  };
+
+  const renderDesktopTestimonials = () => {
+    return testimonialItems.map((testimonial, idx) => (
+      <div key={idx} className="mx-6 flex-shrink-0">
+        <TestimonialCard {...testimonial} />
+      </div>
+    ));
+  };
+
   return (
     <section id="testimonials" className="relative">
-      {/* Desktop View*/}
-      <div className="relative inset-0 z-0 hidden lg:block">
-        <Image
-          src={backgroundDesktop}
-          alt="Testimonials Desktop Background"
-          fill
-          placeholder="blur"
-          className="object-cover"
-        />
-        <div className="relative z-10 lg:py-24">
-          <p className="pb-4 text-center text-3xl font-medium text-white">
-            Ulasan
-          </p>
-          <h2 className="mb-16 text-center text-5xl font-extrabold text-white">
-            Apa kata mereka{" "}
-            <div className="mt-4">
-              tentang <span className="text-[#A7BB09]">Sayurmoms?</span>
-            </div>
-          </h2>
-          <Marquee pauseOnHover={true} speed={30} gradient={false}>
-            {testimonialItems.map((testimonial, idx) => (
-              <div key={idx} className="mx-6 flex-shrink-0">
-                <TestimonialCard {...testimonial} />
-              </div>
-            ))}
-          </Marquee>
-        </div>
-      </div>
-
       {/* Mobile View */}
       <div className="relative z-10 h-[360px] w-full overflow-hidden md:h-[440px] lg:hidden">
         <Image
@@ -59,11 +46,32 @@ const Testimonials: React.FC = () => {
             </div>
           </h2>
           <Marquee pauseOnHover={true} speed={30} gradient={false}>
-            {testimonialItems.map((testimonial, idx) => (
-              <div key={idx} className="mx-2 sm:mx-3">
-                <TestimonialCard {...testimonial} />
-              </div>
-            ))}
+            {renderMobileTestimonials()}
+          </Marquee>
+        </div>
+      </div>
+
+      {/* Desktop View*/}
+      <div className="relative inset-0 z-0 hidden lg:block">
+        <Image
+          src={backgroundDesktop}
+          alt="Testimonials Desktop Background"
+          fill
+          placeholder="blur"
+          className="object-cover"
+        />
+        <div className="relative z-10 lg:py-24">
+          <p className="pb-4 text-center text-3xl font-medium text-white">
+            Ulasan
+          </p>
+          <h2 className="mb-16 text-center text-5xl font-extrabold text-white">
+            Apa kata mereka{" "}
+            <div className="mt-4">
+              tentang <span className="text-[#A7BB09]">Sayurmoms?</span>
+            </div>
+          </h2>
+          <Marquee pauseOnHover={true} speed={30} gradient={false}>
+            {renderDesktopTestimonials()}
           </Marquee>
         </div>
       </div>
