@@ -23,6 +23,67 @@ import Image from "next/image";
 import React from "react";
 
 const Footer: React.FC = () => {
+  const renderFaq = () => {
+    return faqItems.map((item, idx) => (
+      <AccordionItem
+        key={idx}
+        value={`item-${idx}`}
+        className="mb-3 w-full rounded-[10px] bg-[#181818] py-2 md:w-[480px] lg:mb-5 lg:w-[920px] lg:rounded-[40px] lg:py-0"
+      >
+        <AccordionTrigger className="font-sans-jakarta py-2 pl-4 pr-1 text-left text-sm font-medium leading-[20px] text-white md:text-base lg:ml-10 lg:py-11 lg:pr-0 lg:text-3xl lg:font-bold lg:leading-[47.52px]">
+          <span>{item.question}</span>
+        </AccordionTrigger>
+        <AccordionContent className="leading-3 text-white lg:leading-10">
+          <div className="py-2 lg:py-4">
+            <div className="mb-2 ml-4 w-[90%] border-b border-[#cbe023] lg:mb-4 lg:ml-10 lg:w-[1120px]" />
+            <div className="-mb-6 ml-4 mr-4 whitespace-pre-line pt-2 text-[10px] font-normal md:text-sm lg:mb-0 lg:ml-12 lg:mr-[60px] lg:pt-4 lg:text-xl lg:font-medium">
+              {item.answer.split("\n").map((line, i) => (
+                <p key={i} className="mb-1 lg:mb-2">
+                  {line.startsWith("•") ? "• " : ""}
+                  {line.replace(/^•\s*/, "")}
+                </p>
+              ))}
+            </div>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    ));
+  };
+
+  const renderUsefulLinks = () => {
+    return usefulLinks.map((item, idx) => (
+      <p key={idx} className="mb-2 text-sm text-[#707070] lg:text-3xl">
+        {item.name}
+      </p>
+    ));
+  };
+
+  const renderEcommerceItems = () => {
+    return eCommerceItems.map((item, idx) => (
+      <Image
+        key={idx}
+        src={item.image}
+        alt={item.name}
+        width={120}
+        height={46}
+        className="h-[32px] w-[90px] lg:h-[46px] lg:w-[120px]"
+      />
+    ));
+  };
+
+  const renderPaymentMethods = () => {
+    return paymentMethods.map((item, idx) => (
+      <Image
+        key={idx}
+        src={item.image}
+        alt={item.name}
+        width={142}
+        height={44}
+        className="h-[22px] w-[60px] lg:h-[44px] lg:w-[142px]"
+      />
+    ));
+  };
+
   return (
     <section
       id="faq-footer"
@@ -48,30 +109,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="px-4 pt-6 lg:pt-10">
           <Accordion type="single" collapsible>
-            {faqItems.map((item, idx) => (
-              <AccordionItem
-                key={idx}
-                value={`item-${idx}`}
-                className="mb-3 w-full rounded-[10px] bg-[#181818] py-2 md:w-[480px] lg:mb-5 lg:w-[920px] lg:rounded-[40px] lg:py-0"
-              >
-                <AccordionTrigger className="font-sans-jakarta py-2 pl-4 pr-1 text-left text-sm font-medium leading-[20px] text-white md:text-base lg:ml-10 lg:py-11 lg:pr-0 lg:text-3xl lg:font-bold lg:leading-[47.52px]">
-                  <span>{item.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="leading-3 text-white lg:leading-10">
-                  <div className="py-2 lg:py-4">
-                    <div className="mb-2 ml-4 w-[90%] border-b border-[#cbe023] lg:mb-4 lg:ml-10 lg:w-[1120px]" />
-                    <div className="-mb-6 ml-4 mr-4 whitespace-pre-line pt-2 text-[10px] font-normal md:text-sm lg:mb-0 lg:ml-12 lg:mr-[60px] lg:pt-4 lg:text-xl lg:font-medium">
-                      {item.answer.split("\n").map((line, i) => (
-                        <p key={i} className="mb-1 lg:mb-2">
-                          {line.startsWith("•") ? "• " : ""}
-                          {line.replace(/^•\s*/, "")}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
+            {renderFaq()}
           </Accordion>
         </div>
         <div className="mt-6 block w-full lg:hidden">
@@ -112,37 +150,17 @@ const Footer: React.FC = () => {
                 <FooterCategoryCardMobile />
                 <div>
                   <h3 className="mb-4 text-lg font-bold">Useful Links</h3>
-                  {usefulLinks.map((item, idx) => (
-                    <p key={idx} className="mb-2 text-sm text-[#707070]">
-                      {item.name}
-                    </p>
-                  ))}
+                  {renderUsefulLinks()}
                   <h3 className="mb-3 text-lg font-bold">E-Commerce</h3>
                   <div className="flex flex-col gap-2">
-                    {eCommerceItems.map((item, idx) => (
-                      <Image
-                        key={idx}
-                        src={item.image}
-                        alt={item.name}
-                        width={90}
-                        height={32}
-                      />
-                    ))}
+                    {renderEcommerceItems()}
                   </div>
                 </div>
               </div>
               <div className="mb-16">
                 <h3 className="mb-4 text-lg font-bold">Metode Pembayaran</h3>
                 <div className="flex items-center gap-2">
-                  {paymentMethods.map((item, idx) => (
-                    <Image
-                      key={idx}
-                      src={item.image}
-                      alt={item.name}
-                      width={60}
-                      height={22}
-                    />
-                  ))}
+                  {renderPaymentMethods()}
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 w-full">
@@ -181,18 +199,7 @@ const Footer: React.FC = () => {
 
               <div className="flex flex-col gap-8 lg:mt-[100px]">
                 <h3 className="text-4xl font-bold text-black">E-Commerce</h3>
-                <div className="flex gap-8">
-                  {eCommerceItems.map((item, idx) => (
-                    <Image
-                      key={idx}
-                      src={item.image}
-                      alt={item.name}
-                      width={145}
-                      height={46}
-                      className="w-[120px]"
-                    />
-                  ))}
-                </div>
+                <div className="flex gap-8">{renderEcommerceItems()}</div>
               </div>
             </div>
             <FooterCategoryCardDesktop />
@@ -201,26 +208,14 @@ const Footer: React.FC = () => {
                 <h3 className="mb-4 text-2xl font-bold text-black lg:text-4xl">
                   Useful Links
                 </h3>
-                {usefulLinks.map((item, idx) => (
-                  <p key={idx} className="text-3xl text-[#707070]">
-                    {item.name}
-                  </p>
-                ))}
+                {renderUsefulLinks()}
               </div>
               <div className="hidden flex-col gap-8 lg:mt-32 lg:flex">
                 <h3 className="text-4xl font-bold text-black">
                   Metode Pembayaran
                 </h3>
                 <div className="grid grid-cols-3 items-center gap-4">
-                  {paymentMethods.map((item, idx) => (
-                    <Image
-                      key={idx}
-                      src={item.image}
-                      alt={item.name}
-                      width={142}
-                      height={44}
-                    />
-                  ))}
+                  {renderPaymentMethods()}
                 </div>
               </div>
             </div>

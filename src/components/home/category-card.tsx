@@ -58,17 +58,19 @@ export const CategoryCardLoading: React.FC = () => {
 };
 
 export const CategoryCardLoadingWrapper: React.FC = () => {
+  const renderCategories = () => {
+    return Array(8)
+      .fill(null)
+      .map((_, idx) => <CategoryCardLoading key={idx} />);
+  };
+
   return (
     <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
       <div className="hidden flex-col justify-center font-bold leading-snug lg:flex lg:space-y-3 lg:text-4xl">
         <h2 className="text-black">Apa saja product</h2>
         <h2 className="text-[#A7BB09]"> Saryurmoms?</h2>
       </div>
-      {Array(8)
-        .fill(null)
-        .map((_, idx) => (
-          <CategoryCardLoading key={idx} />
-        ))}
+      {renderCategories()}
     </div>
   );
 };

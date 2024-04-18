@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -35,11 +35,9 @@ export default function RootLayout({
             jakarta.variable,
           )}
         >
-          <Container>
-            <Navbar />
-            {children}
-            <Toaster />
-          </Container>
+          <Navbar />
+          <Container>{children}</Container>
+          <Toaster />
         </body>
       </html>
     </StoreProvider>

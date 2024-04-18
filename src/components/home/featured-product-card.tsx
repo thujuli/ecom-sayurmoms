@@ -46,38 +46,46 @@ const FeaturedProductCardWrapper = () => {
   if (loadingCategories || loadingFeaturedProducts)
     return <FeaturedProductCardWrapperLoading />;
 
+  const renderCategoryButtons = () => {
+    return categories.map((category, idx) => (
+      <CategoryButton
+        key={idx}
+        name={category}
+        active={categorySelected}
+        onClick={() => {
+          onHandleSelectCategory(category);
+        }}
+      />
+    ));
+  };
+
+  const renderProducts = () => {
+    return productsByCategory.map((product) => (
+      <ProductCardWrapper
+        key={product.id}
+        image={product.acf.image}
+        price={Number(product.acf.price)}
+        rating={parseFloat(product.acf.rating)}
+        sold={Number(product.acf.sold)}
+        title={product.title.rendered}
+        discount={Number(product.acf.discount)}
+        sku={product.acf.sku}
+      />
+    ));
+  };
+
   return (
     <>
       {/* Select Category */}
       <div className="flex justify-center">
         <div className="no-scrollbar flex flex-nowrap gap-1 overflow-x-auto md:gap-3 lg:gap-4">
-          {categories.map((category, idx) => (
-            <CategoryButton
-              key={idx}
-              name={category}
-              active={categorySelected}
-              onClick={() => {
-                onHandleSelectCategory(category);
-              }}
-            />
-          ))}
+          {renderCategoryButtons()}
         </div>
       </div>
       {/* Products */}
       <div className="flex justify-center">
         <div className="no-scrollbar flex flex-nowrap gap-[10px] overflow-x-auto md:gap-4 lg:gap-7 xl:gap-8">
-          {productsByCategory.map((product) => (
-            <ProductCardWrapper
-              key={product.id}
-              image={product.acf.image}
-              price={Number(product.acf.price)}
-              rating={parseFloat(product.acf.rating)}
-              sold={Number(product.acf.sold)}
-              title={product.title.rendered}
-              discount={Number(product.acf.discount)}
-              sku={product.acf.sku}
-            />
-          ))}
+          {renderProducts()}
         </div>
       </div>
     </>
@@ -85,26 +93,30 @@ const FeaturedProductCardWrapper = () => {
 };
 
 export const FeaturedProductCardWrapperLoading: React.FC = () => {
+  const renderCategoryButtons = () => {
+    return Array(8)
+      .fill(null)
+      .map((_, idx) => <CategoryButtonLoading key={idx} />);
+  };
+
+  const renderProducts = () => {
+    return Array(4)
+      .fill(null)
+      .map((_, idx) => <ProductCardLoading key={idx} />);
+  };
+
   return (
     <>
       {/* Select Category */}
       <div className="flex justify-center">
         <div className="no-scrollbar flex flex-nowrap gap-1 overflow-x-auto md:gap-3 lg:gap-4">
-          {Array(8)
-            .fill(null)
-            .map((_, idx) => (
-              <CategoryButtonLoading key={idx} />
-            ))}
+          {renderCategoryButtons()}
         </div>
       </div>
       {/* Products */}
       <div className="flex justify-center">
         <div className="no-scrollbar flex flex-nowrap gap-[10px] overflow-x-auto md:gap-4 lg:gap-7 xl:gap-8">
-          {Array(4)
-            .fill(null)
-            .map((_, idx) => (
-              <ProductCardLoading key={idx} />
-            ))}
+          {renderProducts()}
         </div>
       </div>
     </>

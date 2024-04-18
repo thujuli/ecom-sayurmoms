@@ -11,6 +11,17 @@ const Categories: React.FC = () => {
 
   if (loading) return <CategoriesLoading />;
 
+  const renderCategories = () => {
+    return data.map((category) => (
+      <CategoryCard
+        key={category.id}
+        description={category.description}
+        image={category.acf.image}
+        title={category.name}
+      />
+    ));
+  };
+
   return (
     <section id="categories" className="mt-[30px] px-5 lg:mt-20 lg:px-16">
       <div className="mb-5 text-[20px] font-bold leading-tight  md:text-2xl lg:hidden">
@@ -23,14 +34,8 @@ const Categories: React.FC = () => {
           <h2 className="text-black">Apa saja product</h2>
           <h2 className="font-extrabold text-darkGreen"> Saryurmoms?</h2>
         </div>
-        {data.map((category) => (
-          <CategoryCard
-            key={category.id}
-            description={category.description}
-            image={category.acf.image}
-            title={category.name}
-          />
-        ))}
+
+        {renderCategories()}
       </div>
     </section>
   );

@@ -7,6 +7,25 @@ import Image from "next/image";
 import React from "react";
 
 const Benefits: React.FC = () => {
+  const renderBenefits = () => {
+    return benefitItems.map((benefit, idx) => (
+      <div
+        key={idx}
+        className="flex flex-col items-center justify-center rounded border border-orange bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6 lg:rounded-2xl lg:px-6 lg:py-7"
+      >
+        <div className="mb-1 rounded bg-green p-1 md:p-2 lg:mb-2 lg:rounded-lg">
+          <benefit.icon
+            width={50}
+            height={50}
+            className="h-[17px] w-[17px] md:h-6 md:w-6 lg:h-9 lg:w-9 xl:h-[50px] xl:w-[50px]"
+          />
+        </div>
+        <span className="text-center text-[9px] font-medium md:text-base lg:text-xl xl:text-2xl">
+          {benefit.title}
+        </span>
+      </div>
+    ));
+  };
   return (
     <section id="benefits" className="relative">
       {/* benefits section for mobile and tablet */}
@@ -31,24 +50,7 @@ const Benefits: React.FC = () => {
             </h2>
           </div>
           <div className="mt-5 grid grid-cols-4 gap-2 md:mt-8 md:gap-6">
-            {benefitItems.map((benefit, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center justify-center rounded border border-orange bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6"
-              >
-                <div className="mb-1 rounded bg-green p-1 md:p-2">
-                  <benefit.icon width={17} height={17} className="md:hidden" />
-                  <benefit.icon
-                    width={24}
-                    height={24}
-                    className="hidden md:inline-block"
-                  />
-                </div>
-                <span className="text-center text-[9px] font-medium md:text-base">
-                  {benefit.title}
-                </span>
-              </div>
-            ))}
+            {renderBenefits()}
           </div>
         </div>
       </div>
@@ -75,28 +77,7 @@ const Benefits: React.FC = () => {
             </h2>
           </div>
           <div className="mt-5 grid grid-cols-4 gap-2 md:mt-8 md:gap-6 lg:mt-12 lg:gap-10 xl:gap-14">
-            {benefitItems.map((benefit, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center justify-center rounded border border-orange bg-white py-3 md:rounded-lg md:border-2 md:px-4 md:py-6 lg:rounded-2xl lg:px-6 lg:py-7"
-              >
-                <div className="mb-1 rounded bg-green p-1 md:p-2 lg:mb-2 lg:rounded-lg">
-                  <benefit.icon
-                    width={36}
-                    height={36}
-                    className="hidden lg:inline-block xl:hidden"
-                  />
-                  <benefit.icon
-                    width={50}
-                    height={50}
-                    className="hidden xl:inline-block"
-                  />
-                </div>
-                <span className="text-center text-[10px] font-medium md:text-base lg:text-xl xl:text-2xl">
-                  {benefit.title}
-                </span>
-              </div>
-            ))}
+            {renderBenefits()}
           </div>
         </div>
       </div>
