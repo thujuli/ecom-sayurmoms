@@ -1,5 +1,3 @@
-import Navbar from "@/views/navbar";
-import Container from "@/components/container";
 import StoreProvider from "./store-provider";
 import { metadataDetail } from "@/lib/helper";
 import { cn } from "@/lib/utils";
@@ -35,8 +33,7 @@ export default function RootLayout({
             jakarta.variable,
           )}
         >
-          <Navbar />
-          <Container>{children}</Container>
+          {children}
           <Toaster />
         </body>
       </html>
