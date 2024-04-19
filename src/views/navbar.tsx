@@ -9,7 +9,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
@@ -89,15 +88,16 @@ const Navbar: React.FC = () => {
 
   const renderCartItems = () => {
     return data.map((product, idx) => (
-      <CartItemCard
-        key={idx}
-        image={product.image}
-        price={product.price}
-        qty={product.qty}
-        title={product.title}
-        discount={product.discount}
-        sku={product.sku}
-      />
+      <div key={idx} className="bg-white px-4 py-2">
+        <CartItemCard
+          image={product.image}
+          price={product.price}
+          qty={product.qty}
+          title={product.title}
+          discount={product.discount}
+          sku={product.sku}
+        />
+      </div>
     ));
   };
 
@@ -144,26 +144,28 @@ const Navbar: React.FC = () => {
             </div>
 
             <DrawerFooter>
-              <Button
-                type="button"
-                disabled={!data.length}
-                className="relative w-full font-medium"
-              >
-                {data.length ? (
-                  <>
-                    <span className="absolute left-2 rounded bg-white px-1 text-[10px] text-black lg:text-[12px]">
-                      {data.length}
-                    </span>
+              <Link href="/checkout">
+                <Button
+                  type="button"
+                  disabled={!data.length}
+                  className="relative w-full font-medium"
+                >
+                  {data.length ? (
+                    <>
+                      <span className="absolute left-2 rounded bg-white px-1 text-[10px] text-black lg:text-[12px]">
+                        {data.length}
+                      </span>
+                      <span>Checkout</span>
+                      <span className="absolute right-2 text-[10px] lg:text-[12px]">
+                        Rp.
+                        {priceToIDR(totalAmount)}
+                      </span>
+                    </>
+                  ) : (
                     <span>Checkout</span>
-                    <span className="absolute right-2 text-[10px] lg:text-[12px]">
-                      Rp.
-                      {priceToIDR(totalAmount)}
-                    </span>
-                  </>
-                ) : (
-                  <span>Checkout</span>
-                )}
-              </Button>
+                  )}
+                </Button>
+              </Link>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

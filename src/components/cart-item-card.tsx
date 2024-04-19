@@ -41,7 +41,7 @@ const CartItemCard: React.FC<Props> = (props) => {
   };
 
   return (
-    <div className="flex gap-2 rounded-lg bg-white px-4 py-2">
+    <div className="flex gap-2 rounded-lg bg-white">
       <div className="relative h-[110px] min-w-[110px] overflow-hidden rounded bg-[#EAEAEA] md:h-[114px] md:min-w-[114px]">
         <Image
           alt={title}
@@ -72,7 +72,7 @@ const CartItemCard: React.FC<Props> = (props) => {
                 <s className="text-[#909090]">Rp.{priceIDR}</s>
               </>
             ) : (
-              <p>Rp.${priceIDR}</p>
+              <p>Rp.{priceIDR}</p>
             )}
           </div>
           <div className="flex items-center justify-between">

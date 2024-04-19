@@ -80,7 +80,7 @@ const ProductCard: React.FC<Props> = (props) => {
                 <s className="text-[#909090]">Rp.{priceIDR}</s>
               </>
             ) : (
-              <p>Rp.${priceIDR}</p>
+              <p>Rp.{priceIDR}</p>
             )}
           </div>
 
