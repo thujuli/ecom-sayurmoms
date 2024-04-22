@@ -51,22 +51,12 @@ const Card: React.FC<TCard> = (props) => {
   );
 };
 
-const defaultValues = {
-  address: "",
-  date: undefined,
-  name: "",
-  note: "",
-  phone: "",
-  voucher: "",
-};
-
 const CheckoutPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const { data: cart } = useAppSelector((state) => state.cart);
   const router = useRouter();
   const form = useForm<Checkout>({
     resolver: zodResolver(CheckoutSchema),
-    defaultValues,
   });
 
   const totalAmount = cart.reduce((prev, cur) => {
@@ -83,10 +73,11 @@ const CheckoutPage: React.FC = () => {
     const phoneNumber = "6285157594887";
     const WAMsg = generateWAMsg(cart, totalAmount, data);
 
-    form.reset(defaultValues);
     dispatch(setCart([]));
     localStorage.removeItem("cart");
+    console.log(generateWALink(phoneNumber, WAMsg));
     window.open(generateWALink(phoneNumber, WAMsg), "_blank");
+    router.replace("/");
   };
 
   const renderCartItems = () => {
