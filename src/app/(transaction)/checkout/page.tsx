@@ -83,10 +83,11 @@ const CheckoutPage: React.FC = () => {
     const phoneNumber = "6285157594887";
     const WAMsg = generateWAMsg(cart, totalAmount, data);
 
-    form.reset(defaultValues);
     dispatch(setCart([]));
     localStorage.removeItem("cart");
+    console.log(generateWALink(phoneNumber, WAMsg));
     window.open(generateWALink(phoneNumber, WAMsg), "_blank");
+    router.replace("/");
   };
 
   const renderCartItems = () => {
