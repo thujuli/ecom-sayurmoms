@@ -4,7 +4,9 @@ import logo from "@/public/images/logo.png";
 import { menuItems } from "@/lib/helper";
 import NavbarMenu from "@/components/navbar-menu";
 import { cn, priceToIDR } from "@/lib/utils";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { fetchCategoriesAsync } from "@/lib/features/categoriesSlice";
+import { fetchFeaturedProductsAsync } from "@/lib/features/featuredProductsSlice";
 import {
   Drawer,
   DrawerClose,
@@ -22,12 +24,15 @@ import { Button } from "@/components/ui/button";
 import CartItemCard from "@/components/cart-item-card";
 
 export const CartButton: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.cart);
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     setHasMounted(true);
-  }, []);
+    dispatch(fetchCategoriesAsync());
+    dispatch(fetchFeaturedProductsAsync());
+  }, [dispatch]);
 
   if (!hasMounted) {
     return null; // or a placeholder component
