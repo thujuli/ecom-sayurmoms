@@ -27,7 +27,7 @@ export const getCategories = async () => {
 export const getFeaturedProducts = async () => {
   const res = await fetch(
     process.env.NEXT_PUBLIC_WP_API_URL +
-      "/featured-products?_fields=id,title,acf&acf_format=standard&orderby=id&order=desc&per_page=32",
+      "/featured-products?_fields=id,title,acf&acf_format=standard&orderby=date&order=desc&per_page=32",
   );
 
   if (!res.ok) throw new Error("Failed to fetch featured products");

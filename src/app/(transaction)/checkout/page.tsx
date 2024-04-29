@@ -51,22 +51,12 @@ const Card: React.FC<TCard> = (props) => {
   );
 };
 
-const defaultValues = {
-  address: "",
-  date: undefined,
-  name: "",
-  note: "",
-  phone: "",
-  voucher: "",
-};
-
 const CheckoutPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const { data: cart } = useAppSelector((state) => state.cart);
   const router = useRouter();
   const form = useForm<Checkout>({
     resolver: zodResolver(CheckoutSchema),
-    defaultValues,
   });
 
   const totalAmount = cart.reduce((prev, cur) => {
@@ -105,7 +95,7 @@ const CheckoutPage: React.FC = () => {
   };
 
   return (
-    <section id="checkout" className="mx-auto w-full md:w-[400px] lg:w-[500px]">
+    <main id="checkout" className="mx-auto w-full md:w-[400px] lg:w-[500px]">
       <div className="mb-2 p-2">
         <span className="flex items-center gap-1">
           <button type="button" onClick={() => router.back()}>
@@ -293,7 +283,7 @@ const CheckoutPage: React.FC = () => {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-    </section>
+    </main>
   );
 };
 

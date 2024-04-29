@@ -41,7 +41,7 @@ const ProductCard: React.FC<Props> = (props) => {
   return (
     <div
       onClick={onClick}
-      className="relative flex h-[230px] min-w-[140px] max-w-[140px] cursor-pointer flex-col overflow-hidden rounded-xl border border-orange bg-[#FDFDFD] p-[10px] md:h-[370px] md:min-w-[220px] md:max-w-[220px] md:rounded-2xl md:border-2 lg:h-[500px] lg:min-w-[300px] lg:max-w-[300px] lg:rounded-3xl lg:border-2 lg:p-[25px]"
+      className="relative flex h-[230px] min-w-[150px] max-w-[150px] cursor-pointer flex-col overflow-hidden rounded-xl border border-orange bg-[#FDFDFD] p-[10px] md:h-[370px] md:min-w-[220px] md:max-w-[220px] md:rounded-2xl md:border-2 lg:h-[500px] lg:min-w-[300px] lg:max-w-[300px] lg:rounded-3xl lg:border-2 lg:p-[25px]"
     >
       {/* badge */}
       {discount ? (
@@ -107,7 +107,7 @@ const ProductCard: React.FC<Props> = (props) => {
 
 export const ProductCardLoading: React.FC = () => {
   return (
-    <div className="flex h-[230px] min-w-[140px] max-w-[140px] cursor-pointer flex-col overflow-hidden rounded-xl bg-slate-200 p-[10px] md:h-[370px] md:min-w-[220px] md:max-w-[220px] md:rounded-2xl lg:h-[500px] lg:min-w-[300px] lg:max-w-[300px] lg:rounded-3xl lg:p-[25px]">
+    <div className="flex h-[230px] min-w-[150px] max-w-[150px] cursor-pointer flex-col overflow-hidden rounded-xl bg-slate-200 p-[10px] md:h-[370px] md:min-w-[220px] md:max-w-[220px] md:rounded-2xl lg:h-[500px] lg:min-w-[300px] lg:max-w-[300px] lg:rounded-3xl lg:p-[25px]">
       <Skeleton className="min-h-[118px] rounded-[10px] md:min-h-[196px] lg:min-h-[246px] lg:rounded-[20px]" />
       <div className="my-[6px] flex h-full flex-col justify-between lg:my-3">
         <Skeleton className="min-h-[35px] md:min-h-14 lg:min-h-[82px]" />
