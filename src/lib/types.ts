@@ -2,60 +2,31 @@ import { z } from "zod";
 import validator from "validator";
 
 export type Category = {
-  id: number;
-  name: string;
-  description?: string;
-  acf: {
-    image: string;
-  };
-};
-
-export type Carousel = {
-  id: number;
-  title: {
-    rendered: string;
-  };
-  acf: {
-    image: string;
-    link: string;
-  };
-};
-
-export type Banner = {
-  id: number;
-  title: {
-    rendered: string;
-  };
-  acf: {
-    image: string;
-  };
+  title: string;
+  description: string;
+  image: string;
 };
 
 export type Product = {
-  id: number;
-  title: {
-    rendered: string;
-  };
-  acf: {
-    sku: string;
-    category: {
-      term_id: number;
-      name: string;
-      slug: string;
-      term_group: number;
-      term_taxonomy_id: number;
-      taxonomy: string;
-      description: string;
-      parent: number;
-      count: number;
-      filter: string;
-    };
-    image: string;
-    price: string;
-    sold: string;
-    rating: string;
-    discount?: string;
-  };
+  title: string;
+  sku: string;
+  category: string;
+  image: string;
+  price: number;
+  sold: number;
+  rating: number;
+  discount?: number;
+};
+
+export type Banner = {
+  title: string;
+  image: string;
+};
+
+export type Carousel = {
+  title: string;
+  image: string;
+  link: string;
 };
 
 export type Cart = {

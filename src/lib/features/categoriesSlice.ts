@@ -1,5 +1,5 @@
 import { Category } from "../types";
-import { getCategories } from "../data";
+import { fetchCategories } from "../data";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 
 type CategoriesState = {
@@ -19,7 +19,7 @@ export const fetchCategoriesAsync = createAsyncThunk(
   "categories/fetchCategories",
   async (_, { rejectWithValue }) => {
     try {
-      const categories = await getCategories();
+      const categories = await fetchCategories();
       return categories;
     } catch (error) {
       if (error instanceof Error) return rejectWithValue(error.message);

@@ -1,4 +1,4 @@
-import { getFeaturedProducts } from "../data";
+import { fetchProducts } from "../data";
 import { Product } from "../types";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -18,7 +18,7 @@ export const fetchFeaturedProductsAsync = createAsyncThunk(
   "featuredProducts/fetchFeaturedProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await getFeaturedProducts();
+      const response = await fetchProducts();
       return response;
     } catch (error) {
       if (error instanceof Error) return rejectWithValue(error.message);

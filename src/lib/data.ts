@@ -1,49 +1,61 @@
-import { Banner, Carousel, Category, Product } from "./types";
+import {
+  getBanner,
+  getCarousel,
+  getCategories,
+  getProducts,
+} from "./contentful";
+import { Carousel, Category, Product } from "./types";
 
-export const getCarousels = async () => {
-  const res = await fetch(
-    process.env.NEXT_PUBLIC_WP_API_URL +
-      "/carousels?_fields=id,title,acf&acf_format=standard&orderby=date&order=desc",
-  );
+export const fetchCategories = async () => {
+  const response: any = await getCategories();
+  const newResponse: Category[] = response.map((category: any) => {
+    return {
+      title: category.title,
+      description: category.description,
+      image: "https:" + category.image.fields.file.url,
+    };
+  });
 
-  if (!res.ok) throw new Error("Failed to fetch carousels");
-
-  const data: Carousel[] = await res.json();
-  return data;
+  return newResponse;
 };
 
-export const getCategories = async () => {
-  const res = await fetch(
-    process.env.NEXT_PUBLIC_WP_API_URL +
-      "/product-categories?_fields=id,name,description,acf&acf_format=standard&orderby=id&order=desc",
-  );
+export const fetchProducts = async () => {
+  const response: any = await getProducts();
+  const newResponse: Product[] = response.map((product: any) => {
+    return {
+      title: product.title,
+      sku: product.sku,
+      category: product.category.fields.title,
+      image: "https:" + product.image.fields.file.url,
+      price: product.price,
+      sold: product.sold,
+      rating: product.rating,
+      discount: product.discount,
+    };
+  });
 
-  if (!res.ok) throw new Error("Failed to fetch categories");
-
-  const data: Category[] = await res.json();
-  return data;
+  return newResponse;
 };
 
-export const getFeaturedProducts = async () => {
-  const res = await fetch(
-    process.env.NEXT_PUBLIC_WP_API_URL +
-      "/featured-products?_fields=id,title,acf&acf_format=standard&orderby=date&order=desc&per_page=32",
-  );
+export const fetchBanner = async () => {
+  const response: any = await getBanner();
+  const { title, image } = response[0];
 
-  if (!res.ok) throw new Error("Failed to fetch featured products");
-
-  const data: Product[] = await res.json();
-  return data;
+  return {
+    title,
+    image: "https:" + image.fields.file.url,
+  };
 };
 
-export const getBanner = async () => {
-  const res = await fetch(
-    process.env.NEXT_PUBLIC_WP_API_URL +
-      "/banners?_fields=id,title,acf&acf_format=standard&orderby=date&order=desc&per_page=1",
-  );
+export const fetchCarousel = async () => {
+  const response: any = await getCarousel();
+  const newResponse: Carousel[] = response.map((carousel: any) => {
+    return {
+      title: carousel.title,
+      image: "https:" + carousel.image.fields.file.url,
+      link: carousel.link,
+    };
+  });
 
-  if (!res.ok) throw new Error("Failed to fetch banner");
-
-  const data: Banner[] = await res.json();
-  return data[0];
+  return newResponse;
 };
