@@ -70,12 +70,11 @@ const CheckoutPage: React.FC = () => {
   const delivery = form.watch("delivery");
 
   const onSubmit: SubmitHandler<Checkout> = (data) => {
-    const phoneNumber = "6285157594887";
+    const phoneNumber = "62895627570817";
     const WAMsg = generateWAMsg(cart, totalAmount, data);
 
     dispatch(setCart([]));
     localStorage.removeItem("cart");
-    console.log(generateWALink(phoneNumber, WAMsg));
     window.open(generateWALink(phoneNumber, WAMsg), "_blank");
     router.replace("/");
   };

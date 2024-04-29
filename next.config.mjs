@@ -3,8 +3,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "sayurmoms.test",
+        protocol: "https",
+        hostname: "images.ctfassets.net",
       },
     ],
   },

@@ -23,19 +23,19 @@ const CarouselItems: React.FC<Props> = (props) => {
   const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
 
   const renderCarousels = () => {
-    return carousels.map((carousel) => (
-      <CarouselItem key={carousel.id} className="custom-h-screen">
+    return carousels.map((carousel, idx) => (
+      <CarouselItem key={idx} className="custom-h-screen">
         <AspectRatio ratio={1536 / 782} className="custom-h-screen">
           <Image
-            src={carousel.acf.image}
-            alt={carousel.title.rendered}
+            src={carousel.image}
+            alt={carousel.title}
             fill
             quality={100}
             sizes="100vw"
           />
           <button
             type="button"
-            onClick={() => window.open(carousel.acf.link, "_blank")?.focus()}
+            onClick={() => window.open(carousel.link, "_blank")?.focus()}
             className="absolute bottom-[9%] left-[10%] rounded-full bg-black px-2 py-1 text-[10px] text-gray md:bottom-11 lg:bottom-14 lg:px-4 lg:py-2 lg:text-base xl:bottom-16"
           >
             Cek Sekarang

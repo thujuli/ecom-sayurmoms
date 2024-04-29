@@ -12,12 +12,12 @@ const Categories: React.FC = () => {
   if (loading) return <CategoriesLoading />;
 
   const renderCategories = () => {
-    return data.map((category) => (
+    return data.map((category, idx) => (
       <CategoryCard
-        key={category.id}
+        key={idx}
         description={category.description}
-        image={category.acf.image}
-        title={category.name}
+        image={category.image}
+        title={category.title}
       />
     ));
   };

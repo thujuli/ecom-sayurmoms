@@ -21,9 +21,10 @@ const FeaturedProductCardWrapper = () => {
 
   useEffect(() => {
     const setStates = () => {
-      const newCategories = categoriesData.map((category) => category.name);
+      const newCategories = categoriesData.map((category) => category.title);
+
       const newProductsByCategories = featuredProductsData.filter(
-        (product) => product.acf.category.name === newCategories[0],
+        (product) => product.category === newCategories[0],
       );
 
       setFeaturedProducts(featuredProductsData);
@@ -38,7 +39,7 @@ const FeaturedProductCardWrapper = () => {
   const onHandleSelectCategory = (category: string) => {
     setCategorySelected(category);
     const newProductsByCategories = featuredProducts.filter(
-      (product) => product.acf.category.name === category,
+      (product) => product.category === category,
     );
     setProductsByCategory(newProductsByCategories);
   };
@@ -60,16 +61,16 @@ const FeaturedProductCardWrapper = () => {
   };
 
   const renderProducts = () => {
-    return productsByCategory.map((product) => (
+    return productsByCategory.map((product, idx) => (
       <ProductCardWrapper
-        key={product.id}
-        image={product.acf.image}
-        price={Number(product.acf.price)}
-        rating={parseFloat(product.acf.rating)}
-        sold={Number(product.acf.sold)}
-        title={product.title.rendered}
-        discount={Number(product.acf.discount)}
-        sku={product.acf.sku}
+        key={idx}
+        image={product.image}
+        price={product.price}
+        rating={product.rating}
+        sold={product.sold}
+        title={product.title}
+        discount={product.discount}
+        sku={product.sku}
       />
     ));
   };

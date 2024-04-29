@@ -1,9 +1,9 @@
 import CarouselItems from "@/components/home/carousel-items";
-import { getCarousels } from "@/lib/data";
+import { fetchCarousel } from "@/lib/data";
 import React from "react";
 
 const Carousels: React.FC = async () => {
-  const carousels = await getCarousels();
+  const carousels = await fetchCarousel();
 
   return (
     <section id="carousels">

@@ -1,13 +1,13 @@
 import BannerCard from "@/components/home/banner-card";
-import { getBanner } from "@/lib/data";
+import { fetchBanner } from "@/lib/data";
 import React from "react";
 
 const Banner: React.FC = async () => {
-  const banner = await getBanner();
+  const banner = await fetchBanner();
 
   return (
     <section id="banner" className="custom-h-screen">
-      <BannerCard title={banner.title.rendered} image={banner.acf.image} />
+      <BannerCard title={banner.title} image={banner.image} />
     </section>
   );
 };
