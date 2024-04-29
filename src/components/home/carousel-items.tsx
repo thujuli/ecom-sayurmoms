@@ -26,13 +26,7 @@ const CarouselItems: React.FC<Props> = (props) => {
     return carousels.map((carousel, idx) => (
       <CarouselItem key={idx} className="custom-h-screen">
         <AspectRatio ratio={1536 / 782} className="custom-h-screen">
-          <Image
-            src={carousel.image}
-            alt={carousel.title}
-            fill
-            quality={100}
-            sizes="100vw"
-          />
+          <Image src={carousel.image} alt={carousel.title} fill sizes="100vw" />
           <button
             type="button"
             onClick={() => window.open(carousel.link, "_blank")?.focus()}
