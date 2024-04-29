@@ -23,23 +23,27 @@ import { ShoppingCart, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CartItemCard from "@/components/cart-item-card";
 
-export const CartButton: React.FC = () => {
+type CartButtonProps = {
+  onClick: () => void;
+};
+
+export const CartButton: React.FC<CartButtonProps> = (props) => {
+  const { onClick } = props;
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.cart);
-  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setHasMounted(true);
     dispatch(fetchCategoriesAsync());
     dispatch(fetchFeaturedProductsAsync());
   }, [dispatch]);
 
-  if (!hasMounted) {
-    return null; // or a placeholder component
-  }
-
   return (
-    <div className="relative rounded-sm bg-green p-1 md:rounded-lg md:p-2">
+    <button
+      type="button"
+      aria-label="Cart Button"
+      className="relative rounded-sm bg-green p-1 md:rounded-lg md:p-2"
+      onClick={onClick}
+    >
       <ShoppingCart
         width={16}
         height={16}
@@ -57,13 +61,14 @@ export const CartButton: React.FC = () => {
           {data.length > 99 ? 99 : data.length}
         </div>
       ) : null}
-    </div>
+    </button>
   );
 };
 
 const Navbar: React.FC = () => {
   const { data } = useAppSelector((state) => state.cart);
   const [menuActive, setMenuActive] = useState("");
+  const [open, setOpen] = useState(false);
 
   const totalAmount = data.reduce((prev, cur) => {
     const price = cur.discount
@@ -126,9 +131,9 @@ const Navbar: React.FC = () => {
           {renderMenuItems()}
         </div>
 
-        <Drawer direction="right">
-          <DrawerTrigger>
-            <CartButton />
+        <Drawer direction="right" open={open} onOpenChange={setOpen}>
+          <DrawerTrigger asChild>
+            <CartButton onClick={() => setOpen(!open)} />
           </DrawerTrigger>
           <DrawerContent>
             <DrawerHeader>

@@ -14,6 +14,7 @@ const NavbarMenu: React.FC = () => {
     <div className="flex flex-col lg:hidden">
       <button
         type="button"
+        aria-label="Hamburger Menu"
         onClick={() => setIsActive(!isActive)}
         className="relative"
       >
