@@ -91,6 +91,10 @@ const ProductCardWrapper: React.FC<Props> = (props) => {
     });
   };
 
+  const handleOpenAutoFocus = (event: Event) => {
+    event.preventDefault(); // Prevent default focus behavior
+  };
+
   return (
     <>
       <ProductCard
@@ -107,6 +111,7 @@ const ProductCardWrapper: React.FC<Props> = (props) => {
           <DialogContent
             onCloseClick={handleCloseDialog}
             className="sm:max-w-md"
+            onOpenAutoFocus={handleOpenAutoFocus}
           >
             <DialogHeader>
               <AspectRatio

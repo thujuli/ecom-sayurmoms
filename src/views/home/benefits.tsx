@@ -35,8 +35,7 @@ const Benefits: React.FC = () => {
             src={benefitsMobile}
             alt="Benefits Mobile Background"
             fill
-            sizes="100vw"
-            placeholder="blur"
+            priority
             className="rounded-bl-3xl rounded-br-3xl object-cover"
           />
         </AspectRatio>
@@ -63,7 +62,7 @@ const Benefits: React.FC = () => {
             alt="Benefits Desktop Background"
             fill
             sizes="100vw"
-            placeholder="blur"
+            priority
             className="rounded-bl-3xl rounded-br-3xl object-cover "
           />
         </AspectRatio>
